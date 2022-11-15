@@ -17,11 +17,13 @@ Admin panel and frontend fully support RTL version
 Easy solution to multi-language support.
 Speed, flexibility and full customization.
 
+Thanks for Laravel and AdminLTE
+
 ## Contributing
 
 Thank you for considering contributing to the Flex CMS! If you find it helpful consider to 
 
-[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/gbraad)
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/flexcodes)
 
 ## Support
 

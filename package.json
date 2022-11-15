@@ -1,0 +1,31 @@
+{
+    "private": true,
+    "scripts": {
+        "dev": "npm run development",
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "prod": "npm run production",
+        "production": "mix --production"
+    },
+    "devDependencies": {
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14",
+        "sass": "^1.32.11",
+        "sass-loader": "^11.0.1",
+        "vue": "^2.6.12",
+        "vue-loader": "^15.9.5",
+        "vue-template-compiler": "^2.6.12"
+    },
+    "dependencies": {
+        "laravel-vue-datatable": "^0.6.0",
+        "moment": "^2.29.4",
+        "vue-js-modal": "^2.0.1",
+        "vue-multiselect": "^2.1.6",
+        "vue-numeric-input": "^2.0.0",
+        "vue-toastr": "^2.1.2"
+    }
+}

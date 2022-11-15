@@ -1,0 +1,43 @@
+.fa-arrow-circle-right::before {
+    content: "\f0a8";
+}
+
+.fa-angle-double-left::before {
+    content: "\f101";
+}
+
+.fa-angle-double-right::before {
+    content: "\f100";
+}
+
+.fa-angle-left::before {
+    content: "\f105";
+}
+
+.fa-angle-right::before {
+    content: "\f104";
+}
+
+.bootstrap-switch {
+    direction: ltr;
+}
+
+.tagify__tag__removeBtn {
+    margin-left: 4.66667px;
+    margin-right: -4.66667px;
+}
+
+.select2-container--default[dir="rtl"] .select2-selection--multiple .select2-selection__choice__remove {
+    margin-right: 2px;
+    margin-left: auto;
+}
+
+div.dataTables_wrapper div.dataTables_filter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+div.dataTables_wrapper div.dataTables_filter input {
+    margin-right: 0.5em;
+    margin-left: initial;
+}

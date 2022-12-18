@@ -54,13 +54,13 @@
     <link href="https://unpkg.com/@yaireo/tagify@3.21.5/dist/tagify.css" rel="stylesheet">
     <link href="https://unpkg.com/@yaireo/dragsort@1.0.8/dist/dragsort.css" rel="stylesheet">
     @stack('head')
-<!-- Theme style -->
+    <!-- Theme style -->
     @if (__('messages.dir') == 'rtl')
         <link href="{{ asset_version('assets/adminlte/dist/css/adminlte.rtl.min.css') }}" rel="stylesheet">
         <link href="{{ asset_version('assets/adminlte/custom/style/rtl.css') }}" rel="stylesheet">
     @else
         <link href="{{ asset_version('assets/adminlte/dist/css/adminlte.min.css') }}" rel="stylesheet">
     @endif
-{{--    <link href="{{ asset_version('assets/adminlte/custom/style/style.css') }}" rel="stylesheet">--}}
+    <link href="{{ asset_version('assets/adminlte/custom/style/style.css') }}" rel="stylesheet">
     @stack('style')
 </head>

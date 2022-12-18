@@ -19,14 +19,14 @@ class UserSeeder extends Seeder
         User::query()->create([
             'name' => 'Root',
             'email' => 'root@flexcodes.net',
-            'password' => '326Ss6UVM1bH',
+            'password' => '123456',
             'role_id' => 1,
         ]);
 
         User::query()->create([
             'name' => 'Admin',
             'email' => 'admin@flexcodes.net',
-            'password' => 'Y9F8i6kND1Gg',
+            'password' => '123456',
             'role_id' => 2,
         ]);
     }

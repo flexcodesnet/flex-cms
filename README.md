@@ -1,6 +1,21 @@
 FlexCMS
 ===============
 
+This is our open source [FlexCMS](https://cms.flexcodes.net/) a CMS build with flex in mind.
+
+#### Quick Start:
+
+* Install [php](https://www.php.net/downloads.php/) if you don't already have it.
+* Install [Composer](https://getcomposer.org/download/) if you don't already have it.
+* Clone or [download](https://github.com/flexcodesnet/flex-cms/archive/main.zip) this repo.  (if you download, unzip the file to a directory.)
+* On the command line in the top directory of this repo, run 
+  * `composer i` 
+  * `php artisan serve` 
+* Visit the application with your browser at http://localhost:8000/ and login with
+  * username: root
+  * password: 123456
+
+
 ### About FlexCMS
 
 FlexCMS is a modern design for any website. You can boost your business using FlexCMS Multipurpose Laravel CMS Script.
@@ -21,6 +36,8 @@ Thanks for Laravel and AdminLTE
 
 
 ### Contributing
+
+[Flexcodes](https://www.flexcodes.net/) encourage open source community
 
 Thank you for considering contributing to the FlexCMS! If you find it helpful consider to 
 

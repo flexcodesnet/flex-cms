@@ -47,3 +47,6 @@ Thank you for considering contributing to the FlexCMS! If you find it helpful co
 
 If you discover any bug within our CMS, or want to share with us any new feature idea please send an e-mail to FlexCodes via [support@flexcodes.net](mailto:support@flexcodes.net).
 
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.

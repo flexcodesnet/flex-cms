@@ -3,7 +3,7 @@ FlexCMS
 
 This is our open source [FlexCMS](https://cms.flexcodes.net/) a CMS build with flex in mind.
 
-#### Quick Start:
+## Quick Start:
 
 * Install [php](https://www.php.net/downloads.php/) if you don't already have it.
 * Install [Composer](https://getcomposer.org/download/) if you don't already have it.
@@ -16,7 +16,7 @@ This is our open source [FlexCMS](https://cms.flexcodes.net/) a CMS build with f
   * password: 123456
 
 
-### About FlexCMS
+## About FlexCMS
 
 FlexCMS is a modern design for any website. You can boost your business using FlexCMS Multipurpose Laravel CMS Script.
 
@@ -35,7 +35,7 @@ Speed, flexibility and full customization.
 Thanks for Laravel and AdminLTE
 
 
-### Contributing
+## Contributing
 
 [Flexcodes](https://www.flexcodes.net/) encourage open source community
 
@@ -43,7 +43,7 @@ Thank you for considering contributing to the FlexCMS! If you find it helpful co
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/flexcodes)
 
-### Support
+## Support
 
 If you discover any bug within our CMS, or want to share with us any new feature idea please send an e-mail to FlexCodes via [support@flexcodes.net](mailto:support@flexcodes.net).
 

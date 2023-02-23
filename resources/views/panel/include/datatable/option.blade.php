@@ -13,7 +13,7 @@
 "initComplete": function (settings, json) {
 $table.buttons().container().appendTo('#table-buttons')
 },
-@if(role_permission_check('panel.'.$slug.'.export'))
+@if(role_permission_check("panel.{$moduleName}.export"))
     "buttons": ["copy", "csv", /*"excel",*/ {
     extend: 'pdf',
     footer: true,

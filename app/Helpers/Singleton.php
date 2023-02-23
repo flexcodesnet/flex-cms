@@ -5,7 +5,10 @@ namespace App\Helpers;
 
 class Singleton
 {
-    public static function instance()
+    /**
+     * @return Singleton
+     */
+    public static function instance(): Singleton
     {
         return new Singleton;
     }

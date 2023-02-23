@@ -27,21 +27,18 @@
                     </li>
                 @endif
                 @foreach($menus as $menu)
-                    @php
-                        $menu = (object)$menu;
-                    @endphp
-                    @if(isset($menu->children))
-                        @if(role_permission_check($menu->hrefs))
-                            <li class="nav-header">
-                                @lang($menu->title)
-                            </li>
-                            @foreach($menu->children as $child)
-                                @include('panel.include.menu', ['menu'=>$child])
-                            @endforeach
-                            @continue
-                        @endif
+                    @if(isset($menu->title))
+                        <li class="nav-header">
+                            @lang($menu->title)
+                        </li>
                     @endif
                     @include('panel.include.menu')
+                    @if(isset($menu->children))
+                        @foreach($menu->children as $child)
+                            @include('panel.include.menu', ['menu'=> $child])
+                        @endforeach
+                        @continue
+                    @endif
                 @endforeach
             </ul>
         </nav>

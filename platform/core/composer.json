@@ -1,0 +1,39 @@
+{
+  "name": "flexcodes/platform",
+  "description": "The Flex codes cms Platform based on Laravel Framework.",
+  "keywords": [
+    "flex codes",
+    "flex cms"
+  ],
+  "homepage": "https://flexcodes.net",
+  "support": {
+    "issues": "https://flexcodes.ticksy.com",
+    "document": "https://docs.flexcodes.com"
+  },
+  "authors": [
+    {
+      "name": "Felx codes Technologies",
+      "email": "contact@flexcodes.net"
+    }
+  ],
+  "type": "project",
+  "require": {
+    "barryvdh/laravel-dompdf": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "FXC\\Base\\": "base/src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "FXC\\Base\\Providers\\BaseServiceProvider"
+      ],
+      "aliases": {
+      }
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

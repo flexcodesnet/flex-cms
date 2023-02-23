@@ -23,14 +23,14 @@
                                     @if (!request()->routeIs(sprintf('panel.%s.index', $slug)) )
                                         <li class="breadcrumb-item">
                                             <a href="{{ route(sprintf('panel.%s.index', $slug), app()->getLocale()) }}">
-                                                @lang(sprintf('messages.models.%s.plural', $slug))
+                                                @lang(sprintf('messages.models.plural.%s', $slug))
                                             </a>
                                         </li>
                                     @endif
                                     @if ((isset($model) && isset($model->parent)) || isset($parent_model))
                                         <li class="breadcrumb-item active">
                                             <a href="{{ route(sprintf('panel.%s.edit', $slug), [app()->getLocale(), $parent_model->id ?? $model->parent->id]) }}">
-                                                {{ sprintf('%s %s', __(sprintf('messages.models.%s.single', $slug)), $parent_model->id ?? $model->parent->id) }}
+                                                {{ sprintf('%s %s', __(sprintf('messages.models.single.%s', $slug)), $parent_model->id ?? $model->parent->id) }}
                                             </a>
                                         </li>
                                     @endif
@@ -43,6 +43,7 @@
             <!-- /.content-header -->
         @endif
         @yield('main-content')
+        @yield('content')
     </div>
     <!-- /.content-wrapper -->
     @include('panel.include.footer')

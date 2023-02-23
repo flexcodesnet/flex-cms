@@ -2,16 +2,16 @@
 @endpush
 @push('foot')
     <script type="text/javascript">
-        function {{\App\Support\Str::replace('.','',$slug)}}delModal($id) {
+        function {{\Illuminate\Support\Str::replace('.','',$moduleName)}}delModal($id) {
             delModal({
                 id: $id,
-                query: '#{{\App\Support\Str::replace('.','',$slug)}}delete-modal',
-                url: "{{ (isset($gallery) || isset($inner_action)) ? $inner_action : route(sprintf('panel.%s.delete', $slug),[app()->getLocale(),':id']) }}",
+                query: '#{{\Illuminate\Support\Str::replace('.','',$moduleName)}}delete-modal',
+                url: "{{ (isset($gallery) || isset($inner_action)) ? $inner_action : route(sprintf('panel.%s.delete', $moduleName),[app()->getLocale(),':id']) }}",
             });
         }
     </script>
 @endpush
-<div id="{{\App\Support\Str::replace('.','',$slug)}}delete-modal" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
+<div id="{{\Illuminate\Support\Str::replace('.','',$moduleName)}}delete-modal" class="modal fade" tabindex="-1" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div id="loading" class="overlay d-flex justify-content-center align-items-center invisible">

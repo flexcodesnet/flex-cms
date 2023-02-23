@@ -1,0 +1,9 @@
+{
+  "name": "Blog",
+  "namespace": "FXC\\Blog\\",
+  "provider": "FXC\\Blog\\Providers\\BlogServiceProvider",
+  "author": "Flexcodes Technologies",
+  "url": "https://flexcodes.net",
+  "version": "2.0",
+  "description": "Manage posts, categories, tags"
+}

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Support\Str;
+use FXC\Base\Supports\Str;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;

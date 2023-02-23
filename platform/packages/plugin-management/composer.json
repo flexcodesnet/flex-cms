@@ -1,0 +1,20 @@
+{
+  "name": "flexcodes/plugin-management",
+  "description": "Plugin management package",
+  "type": "package",
+  "autoload": {
+    "psr-4": {
+      "FXC\\PluginManagement\\": "src"
+    }
+  },
+  "require": {
+    "flexcodes/platform": "*@dev"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "FXC\\PluginManagement\\Providers\\PluginManagementServiceProvider"
+      ]
+    }
+  }
+}

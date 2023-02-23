@@ -17,15 +17,15 @@
     <!-- DataTables  & Plugins -->
     <script src="{{ asset_version('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
     <script
-        src="{{ asset_version('assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+            src="{{ asset_version('assets/adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
     <script
-        src="{{ asset_version('assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+            src="{{ asset_version('assets/adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
     <script
-        src="{{ asset_version('assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
+            src="{{ asset_version('assets/adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <script
-        src="{{ asset_version('assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+            src="{{ asset_version('assets/adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
     <script
-        src="{{ asset_version('assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
+            src="{{ asset_version('assets/adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
     <script src="{{ asset_version('assets/adminlte/plugins/jszip/jszip.min.js') }}"></script>
     <script src="{{ asset_version('assets/adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
     <script src="{{ asset_version('assets/adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
@@ -35,7 +35,7 @@
     @yield('custom-script')
 @endpush
 @push('modal')
-    @if(route_is_defined(sprintf('panel.%s.delete', $slug)))
+    @if(route_is_defined(sprintf('panel.%s.delete', $moduleName)))
         @include('panel.include.modal.delete')
     @endif
 @endpush
@@ -52,10 +52,10 @@
                                     <div id="table-buttons"></div>
                                 </div>
                                 <div class="col-6 d-flex justify-content-end">
-                                    @if(route_is_defined(sprintf('panel.%s.add', $slug)) && role_permission_check(sprintf('panel.%s.add', $slug)))
+                                    @if(route_is_defined(sprintf('panel.%s.add', $moduleName)) && role_permission_check(sprintf('panel.%s.add', $moduleName)))
                                         <div class="">
-                                            <a href="{{route(sprintf('panel.%s.add', $slug), app()->getLocale())}}"
-                                               class="btn btn-block btn-primary">@lang('messages.buttons.add')</a>
+                                            <a href="{{route(sprintf('panel.%s.add', $moduleName), app()->getLocale())}}"
+                                               class="btn btn-block btn-primary"> <i class="fas fa-plus"></i> @lang('messages.buttons.add')</a>
                                         </div>
                                     @endif
                                 </div>
@@ -66,8 +66,8 @@
                                     @if($with_id ?? true)
                                         <th>@lang('messages.fields.id')</th>
                                     @endif
-                                    @foreach($ths as $th)
-                                        <th>{{__($th)}}</th>
+                                    @foreach($availableFields as $availableField)
+                                        <th>{{__($availableField->thName)}}</th>
                                     @endforeach
                                     <th class="noExport">@lang('messages.fields.action')</th>
                                 </tr>

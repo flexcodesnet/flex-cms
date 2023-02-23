@@ -13,8 +13,8 @@
     <thead>
     <tr>
         <th style="width: 10%">@lang('messages.fields.id')</th>
-        @foreach($field->ths as $th)
-            @if(\App\Support\Str::contains($th, '.'))
+        @foreach($field->subTitleFields as $th)
+            @if(\FXC\Base\Supports\Str::contains($th, '.'))
                 <th>{{__($th)}}</th>
             @else
                 <th>{{__('messages.fields.'.$th)}}</th>
@@ -28,8 +28,8 @@
         @if(isset($child))
             <tr>
                 <td>{{$key + 1}}</td>
-                @if(isset($field->ths))
-                    @foreach($field->ths as $th)
+                @if(isset($field->subTitleFields))
+                    @foreach($field->subTitleFields as $th)
                         <td>{{ $child->{$th} }}</td>
                     @endforeach
                 @endif

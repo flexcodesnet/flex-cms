@@ -8,7 +8,7 @@
             all: '@lang('messages.fields.all')',
             slug: '{{$field->slug}}',
             query: '#{{$field->slug}}',
-            data: JSON.parse('{!! $field->model->treeView() !!}'), // prettier-ignore
+            data: JSON.parse('{!! isset($field->treeViewModel)? $field->treeViewModel->treeView():$field->model->treeView() !!}'), // prettier-ignore
             @if(isset($values))
             values: {!! $values !!},
             @endif

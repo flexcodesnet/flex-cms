@@ -63,4 +63,5 @@
     @endif
     <link href="{{ asset_version('assets/adminlte/custom/style/style.css') }}" rel="stylesheet">
     @stack('style')
+    @yield('styles')
 </head>

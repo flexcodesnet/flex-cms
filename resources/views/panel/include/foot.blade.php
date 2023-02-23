@@ -91,3 +91,4 @@
 {{--<!-- AdminLTE for demo purposes -->--}}
 {{--<script src="{{ asset_version('assets/adminlte/dist/js/demo.js') }}"></script>--}}
 @stack('foot')
+@yield('scripts')

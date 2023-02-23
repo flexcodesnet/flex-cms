@@ -1,5 +1,15 @@
 const mix = require('laravel-mix');
 mix.disableNotifications();
+
+let glob = require('glob');
+
+mix.options({
+    processCssUrls: false,
+    clearConsole: true,
+    terser: {
+        extractComments: false,
+    }
+});
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -10,5 +20,6 @@ mix.disableNotifications();
  | file for the application as well as bundling up all the JS files.
  |
  */
+glob.sync('./platform/**/**/webpack.mix.js').forEach(item => require(item));
 
 mix.js("resources/js/app.js", "public/assets/adminlte/custom/script/vue.js").vue();

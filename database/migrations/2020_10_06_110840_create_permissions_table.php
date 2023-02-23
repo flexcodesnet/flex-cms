@@ -16,13 +16,14 @@ class CreatePermissionsTable extends Migration
         Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('parent_id')->nullable();
+            $table->string('slug', 255)->unique()->nullable();
             $table->text('title');
-            $table->string('slug')->unique();
-            $table->timestamps();
-            $table->softDeletes();
+
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
             $table->unsignedBigInteger('deleted_by')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use FXC\Base\Traits\BaseTrait;
 use Illuminate\Database\Eloquent\Model;
 use Wildside\Userstamps\Userstamps;
 
 class Setting extends Model
 {
-    use Userstamps;
+    use Userstamps, BaseTrait;
 
     protected $fillable = [];
 

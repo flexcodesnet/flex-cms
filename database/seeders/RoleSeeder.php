@@ -2,8 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Permission;
-use App\Models\Role;
+use FXC\Base\Models\Permission;
+use FXC\Base\Models\Role;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -18,19 +18,19 @@ class RoleSeeder extends Seeder
     {
         Role::query()->truncate();
         DB::table('permission_role')->truncate();
-
-        $role = Role::query()->create([
-            'title' => 'Root',
-        ]);
-
-        $role->permissions()->attach(Permission::childrenIds());
-
-        Role::query()->create([
-            'title' => 'Admin',
-        ]);
-
-        Role::query()->create([
-            'title' => 'Data Entry',
-        ]);
+        $roles = [
+            'Root',
+            'Super Admin',
+            'Admin',
+            'Editor',
+            'User',
+        ];
+        foreach ($roles as $role) {
+            $role = Role::query()->create([
+                'title' => $role,
+            ]);
+            $role->permissions()->attach(Permission::childrenIds());
+        }
     }
 }
+

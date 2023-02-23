@@ -1,3 +1,8 @@
 {
-    "/assets/adminlte/custom/script/vue.js": "/assets/adminlte/custom/script/vue.js"
+    "/vendor/core/packages/plugin-management/js/plugin.js": "/vendor/core/packages/plugin-management/js/plugin.js",
+    "/assets/adminlte/custom/script/vue.js": "/assets/adminlte/custom/script/vue.js",
+    "/vendor/core/packages/plugin-management/css/plugin.css": "/vendor/core/packages/plugin-management/css/plugin.css",
+    "/platform/packages/plugin-management/public/js/plugin.js": "/platform/packages/plugin-management/public/js/plugin.js",
+    "/platform/packages/plugin-management/public/css/plugin.css": "/platform/packages/plugin-management/public/css/plugin.css",
+    "/platform/plugins/blog/public/js/blog.js": "/platform/plugins/blog/public/js/blog.js"
 }

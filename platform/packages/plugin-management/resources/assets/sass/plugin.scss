@@ -1,0 +1,115 @@
+#plugin-list {
+  list-style: none;
+  padding: 0;
+
+  li {
+    display: block;
+    padding: 10px;
+
+    &:nth-child(2n) {
+      background: #eeeeee;
+    }
+
+    &:nth-child(2n + 1) {
+      background: #ffffff;
+    }
+
+    .btn {
+      margin: 10px 0;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    .plugin-name {
+      font-size: 14px;
+      font-weight: bold;
+    }
+  }
+}
+
+.app-grid--blank-slate {
+
+  .app-card-item {
+    margin-bottom: 20px;
+  }
+
+  .app-card-item:nth-child(2n+1) {
+    clear: none;
+  }
+
+  .app-item {
+    padding: 0;
+    box-sizing: border-box;
+    border: none !important;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+    background: #ffffff;
+
+    .app-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      height: 120px;
+      background: linear-gradient(90deg, rgba(251, 173, 40, 1) 25%, rgb(247, 137, 65) 75%, rgb(244, 129, 53) 100%);
+      //background-color: #fdcd09;
+      border-radius: 3px 3px 0 0;
+      overflow: hidden;
+
+      img {
+        max-width: 100%;
+        max-height: 100%;
+      }
+    }
+
+    .app-details {
+      background: #ffffff;
+      padding: 10px 10px 5px;
+      position: relative;
+
+      .app-name {
+        margin: 0 0 5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-size: 18px;
+        font-weight: bold;
+        color: var(--primary);
+        line-height: inherit;
+      }
+    }
+
+    .app-footer {
+      border: 1px solid #e8e8e8;
+      border-radius: 1rem;
+      padding: 0.5rem;
+      position: relative;
+
+      .app-description {
+        margin-left: -10px;
+        padding-left: 10px;
+        padding-top: 5px;
+        padding-right: 10px;
+        height: 30px;
+        color: #aaaaaa;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .app-actions {
+        margin-top: 4px;
+      }
+    }
+  }
+
+  .app-item:hover {
+    .app-details {
+      color: #59a4d2;
+    }
+
+  }
+}

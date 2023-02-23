@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Support\Str;
+use FXC\Base\Http\Controllers\PanelController;
+use FXC\Base\Supports\Str;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class AuthController extends PanelController
 {
@@ -12,13 +18,22 @@ class AuthController extends PanelController
         parent::__construct();
     }
 
+    /**
+     * @param $locale
+     * @return Factory|View|Application
+     */
     public function login($locale = null)
     {
-        $data = (object)[];
+        $data = (object) [];
         $data->title = __('messages.fields.login');
-        return view('panel.auth.login', (array)$data);
+
+        return view('panel.auth.login', (array) $data);
     }
 
+    /**
+     * @param $locale
+     * @return Redirector|Application|RedirectResponse
+     */
     public function logout($locale = null)
     {
         auth()->logout();
@@ -28,7 +43,7 @@ class AuthController extends PanelController
     /**
      * Handle an authentication attempt.
      *
-     * @param Request $request
+     * @param  Request  $request
      *
      * @return mixed
      */

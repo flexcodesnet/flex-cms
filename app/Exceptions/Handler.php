@@ -44,7 +44,13 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e): \Illuminate\Http\Response|JsonResponse|RedirectResponse|Response
+    /**
+     * @param $request
+     * @param  Throwable  $e
+     * @return \Illuminate\Http\Response|JsonResponse|RedirectResponse|Response
+     * @throws Throwable
+     */
+    public function render($request, Throwable $e)
     {
         if ($request->wantsJson()) {
             return parent::prepareJsonResponse($request, $e);

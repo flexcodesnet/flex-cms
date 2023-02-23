@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\Permission;
+use FXC\Base\Models\Permission;
 use Illuminate\Database\Seeder;
 
 class PermissionSeeder extends Seeder
@@ -14,55 +14,40 @@ class PermissionSeeder extends Seeder
      */
     public function run()
     {
+        $crud_permissions = [
+            'View',
+            'Add',
+            'Edit',
+            'Seo',
+            'Delete',
+            'Export',
+        ];
+        $single_permissions = config('settings.permissions.single',[]);
+
+        $module_permissions = config('settings.permissions.modules',[]);
+
         Permission::query()->truncate();
 
-        Permission::query()->create([
-            'title' => 'Settings',
-        ]);
-
-        Permission::query()->create([
-            'title' => 'Profile',
-        ]);
+        foreach ($single_permissions as $permissionTitle) {
+            Permission::query()->create([
+                'title' => $permissionTitle,
+            ]);
+        }
 
         $permissions = [];
-
-        $permissions[] = Permission::query()->create([
-            'title' => 'Users',
-        ]);
-
-        $permissions[] = Permission::query()->create([
-            'title' => 'Roles',
-        ]);
-
-        $permissions[] = Permission::query()->create([
-            'title' => 'Permissions',
-        ]);
+        foreach ($module_permissions as $permissionTitle) {
+            $permissions[] = Permission::query()->create([
+                'title' => $permissionTitle,
+            ]);
+        }
 
         foreach ($permissions as $permission) {
-            Permission::query()->create([
-                'title' => 'View',
-                'parent_id' => $permission->id,
-            ]);
-
-            Permission::query()->create([
-                'title' => 'Add',
-                'parent_id' => $permission->id,
-            ]);
-
-            Permission::query()->create([
-                'title' => 'Edit',
-                'parent_id' => $permission->id,
-            ]);
-
-            Permission::query()->create([
-                'title' => 'Delete',
-                'parent_id' => $permission->id,
-            ]);
-
-            Permission::query()->create([
-                'title' => 'Export',
-                'parent_id' => $permission->id,
-            ]);
+            foreach ($crud_permissions as $crudItem) {
+                Permission::query()->create([
+                    'title'     => $crudItem, // view, add, edit, delete
+                    'parent_id' => $permission->id,
+                ]);
+            }
         }
     }
 }

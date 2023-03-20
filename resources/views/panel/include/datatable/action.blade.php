@@ -30,15 +30,6 @@
                     <i class="fa fa-edit"></i>
                 </a>
             </div>
-            {{--            todo--}}
-            {{--            @if($slug == 'image')--}}
-            {{--                <div>--}}
-            {{--                    <a href="{{route('panel.'.$slug.'.images.index', [app()->getLocale(), $row->id])}}"--}}
-            {{--                       class="btn btn-warning mb-1">--}}
-            {{--                        <i class="fa fa-image"></i>--}}
-            {{--                    </a>--}}
-            {{--                </div>--}}
-            {{--            @endif--}}
         @endif
         @if(route_is_defined('panel.'.$slug.'.delete') && role_permission_check('panel.'.$slug.'.delete'))
             <div>

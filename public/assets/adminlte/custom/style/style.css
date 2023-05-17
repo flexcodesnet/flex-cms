@@ -1,8 +1,8 @@
 :root {
     /*--blue: #184FA8;*/
-    --primary: #FBAD28;
-    --primary-rgb: 251, 173, 40;
-    --primary-dark: #F47622;
+    --primary: #1c35a8;
+    --primary-rgb: 28, 53, 168;
+    --primary-dark: #03136b;
     --accent: #fff;
     --accent-dark: #aaa;
     /*--red: #EF0600;*/
@@ -389,7 +389,7 @@ aside.main-sidebar.sidebar-dark-primary {
 }
 
 [class*="sidebar-dark-"], .navbar-dark {
-    background: linear-gradient(90deg, rgba(251, 173, 40, 1) 0%, rgba(244, 118, 34, 1) 75%, rgba(244, 118, 34, 1) 100%);
+    background: linear-gradient(90deg, #03136b, #0d1e7f, #162993, #1c35a8, #2241be);
 }
 
 .login-page, .register-page {
@@ -402,7 +402,7 @@ aside.main-sidebar.sidebar-dark-primary {
     width: 100%;
     height: 100%;
     backdrop-filter: blur(3px);
-    background: linear-gradient(90deg, rgba(251, 173, 40, 1) 0%, rgba(244, 118, 34, 1) 75%, rgba(244, 118, 34, 1) 100%);
+    background: linear-gradient(90deg, #03136b, #0d1e7f, #162993, #1c35a8, #2241be);
 }
 
 .login-box .card {

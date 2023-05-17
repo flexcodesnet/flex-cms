@@ -4,7 +4,7 @@
     <script type="text/javascript">
         const $table = $("#main-table").DataTable({
             @include('panel.include.datatable.option')
-            "ajax": "{{route(sprintf('panel.%s.data', $slug), app()->getLocale())}}",
+            "ajax": "{{route(sprintf('panel.%s.data', $slug))}}",
             "columns": [
                 {data: "id", "width": "20%"},
                 {data: "title"},

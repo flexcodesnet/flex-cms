@@ -129,7 +129,7 @@ class  PanelController extends Controller
     public function add($locale, $id = null)
     {
         $this->data->method = 'POST';
-        $this->data->action = route(!isset($id) ? sprintf('panel.%s.create', $this->data->slug) : sprintf('panel.%s.model.create', $this->data->slug), isset($id) ? [app()->getLocale(), $id] : app()->getLocale());
+        $this->data->action = route(!isset($id) ? sprintf('panel.%s.create', $this->data->slug) : sprintf('panel.%s.model.create', $this->data->slug), isset($id) ? [$id] : app()->getLocale());
         $this->data->title = sprintf('%s %s', __('messages.buttons.add'), __(sprintf('messages.models.%s.single', $this->data->slug)));
         $this->data->submit_button = 'add';
         if (!is_null(request()->query('id')))
@@ -154,7 +154,7 @@ class  PanelController extends Controller
             $this->data->model = call_user_func(sprintf('%s::query', $this->data->class))
                 ->findOrFail($id);
         $this->data->method = 'PUT';
-        $this->data->action = route(sprintf('panel.%s.update', $this->data->slug), [app()->getLocale(), $id]);
+        $this->data->action = route(sprintf('panel.%s.update', $this->data->slug), [$id]);
         $this->data->title = sprintf('%s %s %s', __('messages.buttons.edit'), __(sprintf('messages.models.%s.single', $this->data->slug)), $id);
         $this->data->submit_button = 'edit';
         return view(sprintf('panel.%s.model', $this->data->slug), (array)$this->data);
@@ -167,7 +167,7 @@ class  PanelController extends Controller
         $response->message = __('messages.messages.create.success');
         $response->model = $this->data->model;
         if (route_is_defined(sprintf('panel.%s.index', $this->data->slug)))
-            $response->redirect = route(sprintf('panel.%s.index', $this->data->slug), [app()->getLocale()]);
+            $response->redirect = route(sprintf('panel.%s.index', $this->data->slug), []);
         return response()->json((array)$response);
     }
 
@@ -179,7 +179,7 @@ class  PanelController extends Controller
         $response->message = __('messages.messages.edit.success');
         $response->model = $this->data->model;
         if (route_is_defined(sprintf('panel.%s.index', $this->data->slug)))
-            $response->redirect = route(sprintf('panel.%s.index', $this->data->slug), [app()->getLocale()]);
+            $response->redirect = route(sprintf('panel.%s.index', $this->data->slug), []);
         return response()->json((array)$response);
     }
 

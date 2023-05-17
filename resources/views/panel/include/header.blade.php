@@ -50,10 +50,10 @@
                     <!-- Menu Footer-->
                     <li class="user-footer">
                         @if(role_permission_check('panel.users.edit'))
-                            <a href="{{route('panel.users.edit', [app()->getLocale(), auth()->id()])}}"
+                            <a href="{{route('panel.users.edit', [auth()->id()])}}"
                                class="btn btn-default btn-flat">@lang('messages.buttons.profile')</a>
                         @endif
-                        <a href="{{route('panel.logout', app()->getLocale())}}"
+                        <a href="{{route('panel.logout')}}"
                            class="btn btn-default btn-flat">@lang('messages.buttons.sign_out')</a>
                     </li>
                 </ul>

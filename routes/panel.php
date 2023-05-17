@@ -21,14 +21,15 @@ use Illuminate\Support\Facades\Route;
 
 // panel shortcut
 Route::get('panel', function () {
-    return redirect(route('panel.index', app()->getLocale()));
+    return redirect(route('panel.index'));
 });
 
 Route::middleware(['guest'])->get('panel/login', function () {
-    return redirect(route('panel.login', app()->getLocale()));
+    return redirect(route('panel.login'));
 });
 // end panel shortcut
-Route::prefix('{locale}')->where(['locale' => array_to_condition(config('app.locales'))])->group(function () {
+
+Route::group([], function () {
     Route::middleware([])->prefix('panel')->group(function () {
         Route::middleware(['guest'])->get('login', [AuthController::class, 'login'])->name('login');
         Route::middleware(['guest'])->any('auth', [AuthController::class, 'authenticate'])->name('auth');

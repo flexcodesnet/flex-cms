@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary">
     <!-- Brand Logo -->
-    <a href="{{route('panel.index', app()->getLocale())}}" class="brand-link">
+    <a href="{{route('panel.index')}}" class="brand-link">
         <img src="{{asset_version('assets/adminlte/custom/img/favicon.svg')}}" alt="Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
@@ -17,7 +17,7 @@
                      with font-awesome or any other icon font library -->
                 @if(false)
                     <li class="nav-item {{request()->routeIs('panel.index') ? 'menu-open' : ''}}">
-                        <a href="{{route('panel.index', app()->getLocale())}}"
+                        <a href="{{route('panel.index')}}"
                            class="nav-link {{request()->routeIs('panel.index') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-h-square"></i>
                             <p>

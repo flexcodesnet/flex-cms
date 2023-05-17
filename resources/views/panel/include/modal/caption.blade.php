@@ -3,8 +3,8 @@
         function captionModal($path) {
             {{--captionImage({--}}
             {{--    path: $path,--}}
-            {{--    putURL: '{{route('panel.image.caption.put', app()->getLocale())}}',--}}
-            {{--    getURL: '{{route('panel.image.caption.get', app()->getLocale())}}',--}}
+            {{--    putURL: '{{route('panel.image.caption.put')}}',--}}
+            {{--    getURL: '{{route('panel.image.caption.get')}}',--}}
             {{--})--}}
         }
     </script>

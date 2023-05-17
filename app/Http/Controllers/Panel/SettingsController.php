@@ -35,7 +35,7 @@ class SettingsController extends PanelController
         }
 
         $this->data->method = 'PUT';
-        $this->data->action = route('panel.settings.index', app()->getLocale());
+        $this->data->action = route('panel.settings.index');
         $this->data->title = __($this->data->base_title . 'plural');
         $this->data->submit_button = 'edit';
         return parent::index($locale);

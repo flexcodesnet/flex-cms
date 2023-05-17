@@ -22,14 +22,14 @@
                                 @if (isset($slug))
                                     @if (!request()->routeIs(sprintf('panel.%s.index', $slug)) )
                                         <li class="breadcrumb-item">
-                                            <a href="{{ route(sprintf('panel.%s.index', $slug), app()->getLocale()) }}">
+                                            <a href="{{ route(sprintf('panel.%s.index', $slug)) }}">
                                                 @lang(sprintf('messages.models.%s.plural', $slug))
                                             </a>
                                         </li>
                                     @endif
                                     @if ((isset($model) && isset($model->parent)) || isset($parent_model))
                                         <li class="breadcrumb-item active">
-                                            <a href="{{ route(sprintf('panel.%s.edit', $slug), [app()->getLocale(), $parent_model->id ?? $model->parent->id]) }}">
+                                            <a href="{{ route(sprintf('panel.%s.edit', $slug), [$parent_model->id ?? $model->parent->id]) }}">
                                                 {{ sprintf('%s %s', __(sprintf('messages.models.%s.single', $slug)), $parent_model->id ?? $model->parent->id) }}
                                             </a>
                                         </li>

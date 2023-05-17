@@ -14,5 +14,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect(route('panel.index', app()->getLocale()));
+    return redirect(route('panel.index'));
 })->name('web.index');

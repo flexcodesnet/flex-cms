@@ -22,7 +22,7 @@ class AuthController extends PanelController
     public function logout($locale = null)
     {
         auth()->logout();
-        return redirect(route('panel.login', app()->getLocale()));
+        return redirect(route('panel.login'));
     }
 
     /**
@@ -47,9 +47,9 @@ class AuthController extends PanelController
 
         if (auth()->attempt($credentials, $request->remember == 'on')) {
             // Authentication passed...
-            return redirect(route('panel.index', app()->getLocale()));
+            return redirect(route('panel.index'));
         }
 
-        return redirect(route('panel.login', app()->getLocale()))->withErrors(['Invalid credentials']);
+        return redirect(route('panel.login'))->withErrors(['Invalid credentials']);
     }
 }

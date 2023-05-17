@@ -18,7 +18,7 @@
         <div class="card-body">
             <p class="login-box-msg">@lang('messages.buttons.sign_in')</p>
 
-            <form method="POST" action="{{ route('panel.auth', app()->getLocale()) }}">
+            <form method="POST" action="{{ route('panel.auth') }}">
                 @csrf
 
                 <div class="input-group mb-3">

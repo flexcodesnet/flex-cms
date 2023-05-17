@@ -6,7 +6,7 @@
     @if($field->slug == 'children')
         @include('panel.include.modal.delete',[])
     @else
-        @include('panel.include.modal.delete',['inner_action'=>route(sprintf('panel.%s.delete', $slug.'.'.$field->slug.'.model'),[app()->getLocale(),$model->id,':id']),'slug'=>$slug.'.'.$field->slug.'.model'])
+        @include('panel.include.modal.delete',['inner_action'=>route(sprintf('panel.%s.delete', $slug.'.'.$field->slug.'.model'),[$model->id,':id']),'slug'=>$slug.'.'.$field->slug.'.model'])
     @endif
 @endpush
 <table class="table table-hover table-bordered">
@@ -42,7 +42,7 @@
                     @if($field->slug == 'children')
                         @include('panel.include.datatable.action',['is_single'=>false,])
                     @else
-                        @include('panel.include.datatable.action',['is_single'=>false,'slug'=>$slug.'.'.$field->slug.'.model','addRoute'=>route(sprintf('panel.%s.add', $slug.'.'.$field->slug.'.model'),[app()->getLocale(),$model->id,$row->id]),'editRoute'=>route(sprintf('panel.%s.edit', $slug.'.'.$field->slug.'.model'),[app()->getLocale(),$model->id,$row->id])])
+                        @include('panel.include.datatable.action',['is_single'=>false,'slug'=>$slug.'.'.$field->slug.'.model','addRoute'=>route(sprintf('panel.%s.add', $slug.'.'.$field->slug.'.model'),[$model->id,$row->id]),'editRoute'=>route(sprintf('panel.%s.edit', $slug.'.'.$field->slug.'.model'),[$model->id,$row->id])])
                     @endif
                 </td>
             </tr>

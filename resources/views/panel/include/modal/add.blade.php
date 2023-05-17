@@ -6,7 +6,7 @@
             addModal({
                 id: $id,
                 query: '#{{$slug}}add-modal',
-                url: "{{ route(sprintf('panel.%s.create', $slug),[app()->getLocale(),':id',':id']) }}".replace(':id', $id),
+                url: "{{ route(sprintf('panel.%s.create', $slug),[':id',':id']) }}".replace(':id', $id),
             });
         }
     </script>

@@ -51,7 +51,7 @@
                                 <div class="col-6 d-flex justify-content-end">
                                     @if(route_is_defined(sprintf('panel.%s.add', $slug)) && role_permission_check(sprintf('panel.%s.add', $slug)))
                                         <div class="">
-                                            <a href="{{route(sprintf('panel.%s.add', $slug), app()->getLocale())}}"
+                                            <a href="{{route(sprintf('panel.%s.add', $slug))}}"
                                                class="btn btn-block btn-primary">@lang('messages.buttons.add')</a>
                                         </div>
                                     @endif

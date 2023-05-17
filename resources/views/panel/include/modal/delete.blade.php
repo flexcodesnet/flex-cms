@@ -6,7 +6,7 @@
             delModal({
                 id: $id,
                 query: '#{{\App\Support\Str::replace('.','',$slug)}}delete-modal',
-                url: "{{ (isset($gallery) || isset($inner_action)) ? $inner_action : route(sprintf('panel.%s.delete', $slug),[app()->getLocale(),':id']) }}",
+                url: "{{ (isset($gallery) || isset($inner_action)) ? $inner_action : route(sprintf('panel.%s.delete', $slug),[':id']) }}",
             });
         }
     </script>

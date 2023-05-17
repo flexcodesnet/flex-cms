@@ -56,7 +56,7 @@ class Handler extends ExceptionHandler
 
         if ($e instanceof TokenMismatchException) {
             if ($request->is('*/panel/auth')) {
-                return redirect()->route('panel.login', [app()->getLocale()])->withErrors([$e->getMessage()]);
+                return redirect()->route('panel.login', [])->withErrors([$e->getMessage()]);
             }
         }
 

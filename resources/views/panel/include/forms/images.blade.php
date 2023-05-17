@@ -5,7 +5,7 @@
         initUppy({
             slug: '{{$field->slug}}',
             target: '#Input{{$field->slug}}',
-            url: '{{ route(sprintf('panel.%s.images.upload', $slug), [app()->getLocale(), $model->id]) }}',
+            url: '{{ route(sprintf('panel.%s.images.upload', $slug), [$model->id]) }}',
             @if(app()->getLocale() != 'en')
             locale: Uppy.locales.{{__(sprintf('messages.languages.%s.uppy.iso', app()->getLocale()))}},
             @endif
@@ -13,9 +13,9 @@
 
         initGallery({
             url: {
-                removeImage: '{{ route(sprintf('panel.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                removeImage: '{{ route(sprintf('panel.%s.image.delete', $slug), [$model->id]) }}?path=',
                 @if (route_is_defined(sprintf('panel.%s.images.featured.add', $slug)))
-                featuredImage: '{{ route(sprintf('panel.%s.images.featured.add', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                featuredImage: '{{ route(sprintf('panel.%s.images.featured.add', $slug), [$model->id]) }}?path=',
                 @endif
             },
             queryCarousel: '.{{$field->slug}}-owl-carousel',

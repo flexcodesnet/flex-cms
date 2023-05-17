@@ -58,19 +58,19 @@ class UsersController extends PanelController
         return parent::data($request);
     }
 
-    public function show($locale, $id)
+    public function show($id)
     {
         $this->data->model = User::query()->where('role_id', '>=', auth()->user()->role_id)->with('role')->findOrFail($id);
-        return parent::show($locale, $id);
+        return parent::show($id);
     }
 
-    public function edit($locale, $id)
+    public function edit($id)
     {
         $this->data->model = User::query()->where('role_id', '>=', auth()->user()->role_id)->with('role')->findOrFail($id);
-        return parent::edit($locale, $id);
+        return parent::edit($id);
     }
 
-    public function create(Request $request, $locale, $id = null)
+    public function create(Request $request, $id = null)
     {
         $request->validate([
             'name' => ['required', 'max:255'],
@@ -89,10 +89,10 @@ class UsersController extends PanelController
         $this->data->model->role_id = $request->role_id;
         $this->data->model->password = $request->password;
         $this->data->model->save();
-        return parent::create($request, $locale);
+        return parent::create($request);
     }
 
-    public function update(Request $request, $locale, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'name' => ['required', 'max:255'],
@@ -112,6 +112,6 @@ class UsersController extends PanelController
         if (!is_null($request->password))
             $this->data->model->password = $request->password;
         $this->data->model->save();
-        return parent::update($request, $locale, $id);
+        return parent::update($request, $id);
     }
 }

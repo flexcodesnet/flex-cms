@@ -11,7 +11,7 @@ use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
 
 class DashboardController extends PanelController
 {
-    public function index($locale = NULL)
+    public function index()
     {
         $this->data->title = sprintf(
             '%s%s %s',

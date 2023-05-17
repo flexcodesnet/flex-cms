@@ -39,7 +39,7 @@ class PermissionsController extends PanelController
         return parent::data($request);
     }
 
-    public function create(Request $request, $locale, $id = null)
+    public function create(Request $request, $id = null)
     {
         if ($id != null)
             Permission::query()->findOrFail($id);
@@ -53,10 +53,10 @@ class PermissionsController extends PanelController
         $this->data->model->parent_id = $request->id;
         $this->data->model->save();
 
-        return parent::create($request, $locale);
+        return parent::create($request);
     }
 
-    public function update(Request $request, $locale, $id)
+    public function update(Request $request, $id)
     {
 //        Log::info('update');
         $request->validate([
@@ -72,10 +72,10 @@ class PermissionsController extends PanelController
             $child->slug = $child->title;
             $child->save();
         }
-        return parent::update($request, $locale, $id);
+        return parent::update($request, $id);
     }
 
-    public function delete($locale, $id)
+    public function delete($id)
     {
         $this->data->model = Permission::query()->findOrFail($id);
         $this->data->model->roles()->detach();
@@ -84,6 +84,6 @@ class PermissionsController extends PanelController
             $child->roles()->detach();
             $child->delete();
         }
-        return parent::delete($locale, $id);
+        return parent::delete($id);
     }
 }

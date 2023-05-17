@@ -28,27 +28,27 @@ class RolesController extends PanelController
         ];
     }
 
-    public function show($locale, $id)
+    public function show($id)
     {
         $this->data->model = Role::query()->findOrFail($id);
         /**
          * for treeview
          */
         $this->data->values = $this->data->model->permissions()->pluck('permissions.id');
-        return parent::show($locale, $id);
+        return parent::show($id);
     }
 
-    public function edit($locale, $id)
+    public function edit($id)
     {
         $this->data->model = Role::query()->findOrFail($id);
         /**
          * for treeview
          */
         $this->data->values = $this->data->model->permissions()->pluck('permissions.id');
-        return parent::edit($locale, $id);
+        return parent::edit($id);
     }
 
-    public function create(Request $request, $locale, $id = null)
+    public function create(Request $request, $id = null)
     {
         $request->validate([
             'title' => ['required', 'max:255'],
@@ -63,10 +63,10 @@ class RolesController extends PanelController
             $this->data->model->permissions()->attach($request->permissions);
         }
 
-        return parent::create($request, $locale);
+        return parent::create($request);
     }
 
-    public function update(Request $request, $locale, $id)
+    public function update(Request $request, $id)
     {
         $request->validate([
             'title' => ['required', 'max:255'],
@@ -81,12 +81,12 @@ class RolesController extends PanelController
             $this->data->model->permissions()->attach($request->permissions);
         }
 
-        return parent::update($request, $locale, $id);
+        return parent::update($request, $id);
     }
 
-    public function delete($locale, $id)
+    public function delete($id)
     {
         Role::query()->findOrFail($id)->permissions()->detach();
-        return parent::delete($locale, $id);
+        return parent::delete($id);
     }
 }

@@ -22,7 +22,7 @@ class SettingsController extends PanelController
         ];
     }
 
-    public function index($locale)
+    public function index()
     {
         $this->data->model = Setting::query()->firstOrCreate([
             'id' => 1,
@@ -31,13 +31,13 @@ class SettingsController extends PanelController
         if (request()->isMethod('PUT')) {
             $this->data->model->title = request()->title;
             $this->data->model->save();
-            return parent::update(request(), $locale, $this->data->model->id);
+            return parent::update(request(), $this->data->model->id);
         }
 
         $this->data->method = 'PUT';
         $this->data->action = route('panel.settings.index');
         $this->data->title = __($this->data->base_title . 'plural');
         $this->data->submit_button = 'edit';
-        return parent::index($locale);
+        return parent::index();
     }
 }

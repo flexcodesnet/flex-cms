@@ -115,7 +115,7 @@ class  PanelController extends Controller
         }
     }
 
-    public function index($locale)
+    public function index()
     {
         $this->data->title = sprintf('messages.models.%s.plural', $this->data->slug);
         if (isset($this->data->need_to_check_locale) && $this->data->need_to_check_locale) {
@@ -126,7 +126,7 @@ class  PanelController extends Controller
         return view(sprintf('panel.%s.index', $this->data->slug), (array)$this->data);
     }
 
-    public function add($locale, $id = null)
+    public function add($id = null)
     {
         $this->data->method = 'POST';
         $this->data->action = route(!isset($id) ? sprintf('panel.%s.create', $this->data->slug) : sprintf('panel.%s.model.create', $this->data->slug), isset($id) ? [$id] : app()->getLocale());
@@ -137,7 +137,7 @@ class  PanelController extends Controller
         return view(sprintf('panel.%s.model', $this->data->slug), (array)$this->data);
     }
 
-    public function show($locale, $id)
+    public function show($id)
     {
         if (!isset($this->data->model))
             $this->data->model = call_user_func(sprintf('%s::query', $this->data->class))
@@ -148,7 +148,7 @@ class  PanelController extends Controller
         return view(sprintf('panel.%s.model', $this->data->slug), (array)$this->data);
     }
 
-    public function edit($locale, $id)
+    public function edit($id)
     {
         if (!isset($this->data->model))
             $this->data->model = call_user_func(sprintf('%s::query', $this->data->class))
@@ -160,7 +160,7 @@ class  PanelController extends Controller
         return view(sprintf('panel.%s.model', $this->data->slug), (array)$this->data);
     }
 
-    public function create(Request $request, $locale, $id = null)
+    public function create(Request $request, $id = null)
     {
         $response = (object)[];
         $response->status = 'success';
@@ -171,7 +171,7 @@ class  PanelController extends Controller
         return response()->json((array)$response);
     }
 
-    public function update(Request $request, $locale, $id)
+    public function update(Request $request, $id)
     {
         $response = (object)[];
         $response->id = $id;
@@ -183,7 +183,7 @@ class  PanelController extends Controller
         return response()->json((array)$response);
     }
 
-    public function delete($locale, $id)
+    public function delete($id)
     {
         call_user_func(sprintf('%s::query', $this->data->class))
             ->findOrFail($id)->delete(); // (As of PHP 5.2.3)

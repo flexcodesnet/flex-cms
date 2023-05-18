@@ -5,6 +5,7 @@ namespace App\Http;
 use App\Http\Middleware\AjaxMiddleware;
 use App\Http\Middleware\Authenticate;
 use App\Http\Middleware\EncryptCookies;
+use App\Http\Middleware\Localization;
 use App\Http\Middleware\PreventRequestsDuringMaintenance;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use App\Http\Middleware\RolePermission;
@@ -52,15 +53,6 @@ class Kernel extends HttpKernel
 
         EncryptCookies::class,
         StartSession::class,
-
-        InlineCss::class,
-        ElideAttributes::class,
-        InsertDNSPrefetch::class,
-        RemoveComments::class,
-//        TrimUrls::class,
-//        RemoveQuotes::class,
-//        CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
-//        DeferJavascript::class,
     ];
 
     /**
@@ -77,6 +69,15 @@ class Kernel extends HttpKernel
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,
             SubstituteBindings::class,
+
+            InlineCss::class,
+            ElideAttributes::class,
+            InsertDNSPrefetch::class,
+            RemoveComments::class,
+//        TrimUrls::class,
+//        RemoveQuotes::class,
+//        CollapseWhitespace::class, // Note: This middleware invokes "RemoveComments::class" before it runs.
+//        DeferJavascript::class,
         ],
 
         'api' => [
@@ -105,5 +106,6 @@ class Kernel extends HttpKernel
         'verified' => EnsureEmailIsVerified::class,
         'ajax' => AjaxMiddleware::class,
         'role_permission' => RolePermission::class,
+        'localization' => Localization::class,
     ];
 }

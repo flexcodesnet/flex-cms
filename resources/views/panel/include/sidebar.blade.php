@@ -15,7 +15,7 @@
                 data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                      with font-awesome or any other icon font library -->
-                @if(false)
+                @if(true)
                     <li class="nav-item {{request()->routeIs('panel.index') ? 'menu-open' : ''}}">
                         <a href="{{route('panel.index')}}"
                            class="nav-link {{request()->routeIs('panel.index') ? 'active' : ''}}">

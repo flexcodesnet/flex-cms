@@ -96,25 +96,7 @@ if (!function_exists('remove_null')) {
 if (!function_exists('get_translated_route')) {
     function get_translated_route($locale)
     {
-        $temp = "";
-        $params = [];
-        if (!is_null(request()->route()))
-            $params = request()->route()->parameters();
-
-        if (isset($params))
-            $params['locale'] = $locale;
-
-        $baseRoute = 'web.index';
-        if (Str::contains(request()->path(), '/panel')) {
-            $baseRoute = 'panel.index';
-        }
-
-        $temp = route($baseRoute, array_merge($params, request()->query()));
-
-        if (!is_null(request()->route()))
-            $temp = route((request()->route()->getName() !== null) ? request()->route()->getName() : $baseRoute, array_merge($params, request()->query()));
-
-        return $temp;
+        return get_translated_routes()[$locale];
     }
 }
 
@@ -125,7 +107,7 @@ if (!function_exists('get_translated_routes')) {
         foreach (config('app.locales') as $local) {
             $params = [];
             if (!is_null(request()->route()))
-                $params = request()->route()->parameters();
+                $params = request()->query();
 
             if (isset($params))
                 $params['locale'] = $local;
@@ -135,10 +117,10 @@ if (!function_exists('get_translated_routes')) {
                 $baseRoute = 'panel.index';
             }
 
-            $temp[$local] = route($baseRoute, array_merge($params, request()->query()));
+            $temp[$local] = route($baseRoute, array_merge(request()->route()->parameters, $params));
 
             if (!is_null(request()->route()))
-                $temp[$local] = route((request()->route()->getName() !== null) ? request()->route()->getName() : $baseRoute, array_merge($params, request()->query()));
+                $temp[$local] = route((request()->route()->getName() !== null) ? request()->route()->getName() : $baseRoute, array_merge(request()->route()->parameters, $params));
         }
         return $temp;
     }

@@ -62,5 +62,4 @@ class Controller extends BaseController
 
         return view($view, (array)$this->data);
     }
-
 }

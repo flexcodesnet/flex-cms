@@ -27,13 +27,19 @@
         @endpush
         @break
     @case('code_editor')
+            <?php
+            $value = '';
+            if (isset($model)) {
+                $value = isset($model[$field->slug]) ? $model[$field->slug] : '';
+            }
+            ?>
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
             <textarea id="Input{{$field->slug}}"
                       class="codeMirrorDemo p-3"
                       name="{{$field->slug}}"
-            >{{isset($model[$field->slug]) ? $model[$field->slug] : ''}}</textarea>
+            >{{$value}}</textarea>
         </div>
         @push('foot')
             <script type="text/javascript">
@@ -50,7 +56,7 @@
             <div class="col-6">
                 <input type="checkbox" id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                        name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
-                       @if(isset($model) && !empty(isset($model->translatable) && in_array($field->init_slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->init_slug, $parentFieldLocal ?? app()->getLocale()) : $model[$field->slug]))
+                       @if(isset($model) && !empty(isset($model->translatable) && in_array($field->init_slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->init_slug, $parentFieldLocal ?? app()->getLocale()) : ($model[$field->slug] ?? ((isset($model->extra_attributes) && isset($model->extra_attributes[$field->slug])) ? $model->extra_attributes[$field->slug] : ''))))
                            checked
                        @endif
                        @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
@@ -64,13 +70,13 @@
         </div>
         @break
     @case('one_image')
-        @include('panel.include.modal.caption')
+        @include('cms.include.modal.caption')
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
             @if(isset($model) and isset($model[$field->slug]))
                 <div class="form-group">
-                    @include('panel.include.forms.image', ['image'=>$model[$field->slug],'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true])
+                    @include('cms.include.forms.image', ['image'=>$model[$field->slug],'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true])
                 </div>
                 @push('head')
                     <style>
@@ -83,7 +89,7 @@
                     <script type="text/javascript">
                         removeImage({
                             query: '.{{$field->slug}} .remove-image',
-                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [$model->id]) }}?path=',
+                            url: '{{ route(sprintf('cms.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
                         });
                     </script>
                 @endpush
@@ -91,6 +97,67 @@
             <div class="custom-file">
                 <input type="file" class="custom-file-input" id="Input{{$field->slug}}"
                        name="{{$field->slug}}" accept="image/*"
+                       {{isset($field->required) && $field->required ? 'required' : ''}}
+                       @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
+                           disabled
+                    @endif>
+                <label class="custom-file-label"
+                       for="Input{{$field->slug}}">@lang('messages.fields.please_choose') @lang(sprintf('messages.fields.%s',$field->slug))</label>
+            </div>
+        </div>
+        @break
+    @case('video')
+        <div class="form-group">
+            <label
+                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+            @if(isset($model) and isset($model[$field->slug]))
+                <div class="form-group">
+                    <div class="image-area">
+                        @if(!empty($model[$field->slug]))
+                            <video
+                                id="my-video"
+                                class="video-js"
+                                controls
+                                muted
+                                preload="auto"
+                                width="640"
+                                height="480"
+                                data-setup="{}"
+                            >
+                                <source src="{{asset('storage/'.$model[$field->slug])}}" type="video/mp4"/>
+                                <p class="vjs-no-js">
+                                    To view this video please enable JavaScript, and consider upgrading to a
+                                    web browser that
+                                    <a href="https://videojs.com/html5-video-support/" target="_blank"
+                                    >supports HTML5 video</a>
+                                </p>
+                            </video>
+                            <div class="{{$field->slug}} gallery action-btn">
+                                <a class="remove-image" href="{{$model[$field->slug]}}" data-item="{{$itemId ?? ''}}"
+                                   style="display: inline;"><i class="fa fa-trash"></i></a>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+                @push('head')
+                    <style>
+                        .custom-file-input:lang({{app()->getLocale()}}) ~ .custom-file-label::after {
+                            content: "@lang('messages.fields.browse')" !important;
+                        }
+                    </style>
+                @endpush
+                @push('foot')
+                    <script type="text/javascript">
+                        removeImage({
+                            query: '.{{$field->slug}} .remove-image',
+                            url: '{{ route(sprintf('cms.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                        });
+                    </script>
+                @endpush
+            @endif
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="Input{{$field->slug}}"
+                       name="{{$field->slug}}" accept="video/mp4"
                        @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                            disabled
                     @endif>
@@ -101,7 +168,7 @@
         @break
     @case('images')
         @if(isset($model))
-            @include('panel.include.forms.images')
+            @include('cms.include.forms.images')
         @endif
         @break
     @case('featured_images')
@@ -112,7 +179,7 @@
                 <ul id="image-list" class="ul-{{$field->slug}}">
                     @foreach($model->featuredImages()->get() as $image)
                         <li>
-                            @include('panel.include.forms.image', ['image'=>$image->path,'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true,])
+                            @include('cms.include.forms.image', ['image'=>$image->path,'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true,])
                         </li>
                     @endforeach
                 </ul>
@@ -121,12 +188,12 @@
                 <script type="text/javascript">
                     sortable({
                         query: '.ul-{{$field->slug}}',
-                        url: '{{route("panel.{$field->slug}.images.featured.update", [$model->id])}}'
+                        url: '{{route("cms.{$field->slug}.images.featured.update", [app()->getLocale(), $model->id])}}'
                     });
 
                     removeImage({
                         query: '.ul-{{$field->slug}} .remove-image',
-                        url: '{{ route("panel.{$field->slug}.images.featured.delete", [$model->id]) }}?path=',
+                        url: '{{ route("cms.{$field->slug}.images.featured.delete", [app()->getLocale(), $model->id]) }}?path=',
                     });
                 </script>
             @endpush
@@ -147,7 +214,7 @@
                        dir="{{__(sprintf('messages.languages.%s.dir', $parentFieldLocal))}}"
                    @endif
                    @if(isset($model))
-                       value="{{isset($model->translatable) && in_array($field->slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->slug, $parentFieldLocal ?? app()->getLocale()) : $model[$field->slug]}}"
+                       value="{{isset($model->translatable) && in_array($field->slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->slug, $parentFieldLocal ?? app()->getLocale()) : ($model[$field->slug] ?? ((isset($model->extra_attributes) && isset($model->extra_attributes[$field->slug])) ? $model->extra_attributes[$field->slug] : ''))}}"
                    @endif
                    @if(isset($field->value))
                        value="{{$field->value}}"
@@ -186,6 +253,13 @@
         </div>
         @break
     @case('textarea')
+            <?php
+            $value = '';
+            if (isset($model)) {
+                $value = (isset($model->translatable) && in_array($field->slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->slug, $parentFieldLocal ?? app()->getLocale()) : $model[$field->slug]);
+                $value = \App\Support\Str::replaceAll(['<br />', '<br/>', '<br>'], '&#10;', $value);
+            }
+            ?>
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
@@ -199,12 +273,16 @@
                       {{isset($field->required) && $field->required ? 'required' : ''}}
                       @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                           disabled
-                  @endif>@if(isset($model))
-                    {!! str_replace('<br />','&#13;&#10;', (isset($model->translatable) && in_array($field->slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->slug, $parentFieldLocal ?? app()->getLocale()) : $model[$field->slug])) !!}
-                @endif</textarea>
+                  @endif>{!! $value !!}</textarea>
         </div>
         @break
     @case('editor')
+            <?php
+            $value = '';
+            if (isset($model)) {
+                $value = in_array($field->slug, $model->myTranslatable) ? $model->translate($field->slug, $parentFieldLocal ?? app()->getLocale()) : $model[$field->slug];
+            }
+            ?>
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
@@ -216,9 +294,7 @@
                       {{isset($field->required) && $field->required ? 'required' : ''}}
                       @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                           disabled
-                @endif>@if(isset($model))
-                    {{in_array($field->slug, $model->myTranslatable) ? $model->translate($field->slug, $parentFieldLocal ?? app()->getLocale()) : $model[$field->slug]}}
-                @endif</textarea>
+                @endif>{{$value}}</textarea>
         </div>
         @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
             @push('foot')
@@ -248,13 +324,13 @@
                         @if((isset($model)))
                             @if(isset($model->model_class))
                                 @if($model[$field->relation_key] == $item->id && \App\Support\Str::contains($model->model_class,__(sprintf('messages.models.%s.single',$field->slug))))
-                                    selected="selected"
+                                    selected
                         @endif
                         @elseif($model[$field->relation_key] == $item->id)
-                            selected="selected"
+                            selected
                         @endif
                         @endif
-                        value="{{$item->id}}">{{$item->title}}</option>
+                        value="{{$item->id}}">{{$item->title ?? $item->name ?? (isset($item->extra_attributes) ? $item->extra_attributes[$field->slug_key] : '')}}</option>
                 @endforeach
             </select>
         </div>
@@ -304,7 +380,7 @@
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}">@lang(sprintf('messages.models.%s.single',$field->slug))</label>
-            @include('panel.include.forms.treeview')
+            @include('cms.include.forms.treeview')
         </div>
         @break
     @case('children')
@@ -317,7 +393,7 @@
                     @if(!(isset($method) && $method == 'GET'))
                         <div class="col-6 d-flex justify-content-end">
                             <div class="">
-                                <a href="{{route(sprintf('panel.%s.%s.model.add',$slug,$field->slug), [$model->id])}}"
+                                <a href="{{route(sprintf('cms.%s.%s.model.add',$slug,$field->slug), [app()->getLocale(), $model->id])}}"
                                    class="btn btn-primary">@lang('messages.buttons.add')</a>
                             </div>
                         </div>
@@ -326,7 +402,7 @@
                 @php
                     $children = $model->{$field->slug};
                 @endphp
-                @includeWhen((isset($children) && $children->count() > 0), 'panel.include.forms.children')
+                @includeWhen((isset($children) && $children->count() > 0), 'cms.include.forms.children')
             </div>
         @endif
         @break
@@ -361,11 +437,11 @@
         @endpush
         @break
     @case('enum')
-        @include('panel.include.forms.enum')
+        @include('cms.include.forms.enum')
         @break
     @case('enum_relation')
         @if($method != 'POST' && (isset($model)))
-            @include('panel.'.$slug.'.enum')
+            @include('cms.'.$slug.'.enum')
         @endif
         @break
     @case('multi_select')
@@ -373,7 +449,7 @@
             <input type="hidden" id="hidden{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                    name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
                    @if(isset($model) && isset($model[$field->relation]))
-                       value="{{isset($parentFieldLocal) ? $model->getTranslationWithoutFallback($field->relation, $parentFieldLocal ?? app()->getLocale()) : $model[$field->relation]->pluck('id')->implode(',')}}"
+                       value="{{isset($parentFieldLocal) ? $model->getTranslationWithoutFallback($field->relation, $parentFieldLocal ?? app()->getLocale()) : $model[$field->value ?? $field->relation]->pluck('id')->implode(',')}}"
                 @endif
             >
             <label
@@ -402,7 +478,7 @@
                         @endif
                         @endif
                         @endif
-                    >{{ $item->{$field->title??'title'} }}</option>
+                    >{{ (isset($field->title) ? $item->{$field->title} : $item->title) ?? $item->name ?? (isset($item->extra_attributes) ? $item->extra_attributes[$field->slug_key ?? 'name'] : '') }}</option>
                 @endforeach
             </select>
         </div>
@@ -411,6 +487,43 @@
                 initMultiSelect({
                     queryInput: '#Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}',
                     queryHidden: '#hidden{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}',
+                });
+            </script>
+        @endpush
+        @break
+    @case('multi_select_array')
+        <div class="form-group">
+            <input type="hidden" id="hidden{{$field->slug}}"
+                   name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
+                   @if(isset($model->{$field->slug})) value="{{ $model->{$field->slug}->pluck('id')->implode(',') }}" @endif
+            >
+            <label
+                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+            <select class="select2" multiple="multiple"
+                    data-placeholder="@lang('messages.fields.please_choose')"
+                    id="Input{{$field->slug}}"
+                    @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
+                        disabled
+                    @endif
+                    @if(isset($field->maximum_selection_length))
+                        data-maximum-selection-length="{{$field->maximum_selection_length}}"
+                    @endif
+                    style="width: 100%;">
+                @foreach($field->array as $key => $item)
+                    <option
+                        value="{{$item->id}}"
+                        @if(isset($model) && in_array($item->id, $model->{$field->slug}->pluck('id')->toArray()))
+                            selected
+                        @endif
+                    >{{$item->title}}</option>
+                @endforeach
+            </select>
+        </div>
+        @push('foot')
+            <script type="text/javascript">
+                initMultiSelect({
+                    queryInput: '#Input{{$field->slug}}',
+                    queryHidden: '#hidden{{$field->slug}}',
                 });
             </script>
         @endpush

@@ -70,13 +70,13 @@
         </div>
         @break
     @case('one_image')
-        @include('cms.include.modal.caption')
+        @include('panel.include.modal.caption')
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
             @if(isset($model) and isset($model[$field->slug]))
                 <div class="form-group">
-                    @include('cms.include.forms.image', ['image'=>$model[$field->slug],'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true])
+                    @include('panel.include.forms.image', ['image'=>$model[$field->slug],'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true])
                 </div>
                 @push('head')
                     <style>
@@ -89,7 +89,7 @@
                     <script type="text/javascript">
                         removeImage({
                             query: '.{{$field->slug}} .remove-image',
-                            url: '{{ route(sprintf('cms.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
                         });
                     </script>
                 @endpush
@@ -150,7 +150,7 @@
                     <script type="text/javascript">
                         removeImage({
                             query: '.{{$field->slug}} .remove-image',
-                            url: '{{ route(sprintf('cms.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
                         });
                     </script>
                 @endpush
@@ -168,7 +168,7 @@
         @break
     @case('images')
         @if(isset($model))
-            @include('cms.include.forms.images')
+            @include('panel.include.forms.images')
         @endif
         @break
     @case('featured_images')
@@ -179,7 +179,7 @@
                 <ul id="image-list" class="ul-{{$field->slug}}">
                     @foreach($model->featuredImages()->get() as $image)
                         <li>
-                            @include('cms.include.forms.image', ['image'=>$image->path,'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true,])
+                            @include('panel.include.forms.image', ['image'=>$image->path,'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true,])
                         </li>
                     @endforeach
                 </ul>
@@ -188,12 +188,12 @@
                 <script type="text/javascript">
                     sortable({
                         query: '.ul-{{$field->slug}}',
-                        url: '{{route("cms.{$field->slug}.images.featured.update", [app()->getLocale(), $model->id])}}'
+                        url: '{{route("panel.{$field->slug}.images.featured.update", [app()->getLocale(), $model->id])}}'
                     });
 
                     removeImage({
                         query: '.ul-{{$field->slug}} .remove-image',
-                        url: '{{ route("cms.{$field->slug}.images.featured.delete", [app()->getLocale(), $model->id]) }}?path=',
+                        url: '{{ route("panel.{$field->slug}.images.featured.delete", [app()->getLocale(), $model->id]) }}?path=',
                     });
                 </script>
             @endpush
@@ -380,7 +380,7 @@
         <div class="form-group">
             <label
                 for="Input{{$field->slug}}">@lang(sprintf('messages.models.%s.single',$field->slug))</label>
-            @include('cms.include.forms.treeview')
+            @include('panel.include.forms.treeview')
         </div>
         @break
     @case('children')
@@ -393,7 +393,7 @@
                     @if(!(isset($method) && $method == 'GET'))
                         <div class="col-6 d-flex justify-content-end">
                             <div class="">
-                                <a href="{{route(sprintf('cms.%s.%s.model.add',$slug,$field->slug), [app()->getLocale(), $model->id])}}"
+                                <a href="{{route(sprintf('panel.%s.%s.model.add',$slug,$field->slug), [app()->getLocale(), $model->id])}}"
                                    class="btn btn-primary">@lang('messages.buttons.add')</a>
                             </div>
                         </div>
@@ -402,7 +402,7 @@
                 @php
                     $children = $model->{$field->slug};
                 @endphp
-                @includeWhen((isset($children) && $children->count() > 0), 'cms.include.forms.children')
+                @includeWhen((isset($children) && $children->count() > 0), 'panel.include.forms.children')
             </div>
         @endif
         @break
@@ -437,11 +437,11 @@
         @endpush
         @break
     @case('enum')
-        @include('cms.include.forms.enum')
+        @include('panel.include.forms.enum')
         @break
     @case('enum_relation')
         @if($method != 'POST' && (isset($model)))
-            @include('cms.'.$slug.'.enum')
+            @include('panel.'.$slug.'.enum')
         @endif
         @break
     @case('multi_select')

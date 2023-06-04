@@ -12,7 +12,6 @@ if (!function_exists('role_permission_check')) {
         if (!is_null(auth()->user()) && isset($request)) {
             if (gettype($request) == 'object') {
                 $route_name = $request->route()->getName();
-//                $route_name = $request->routeIs('panel.index') ? 'panel.dashboard' : $route_name;
                 return Permission::check($route_name);
             }
 

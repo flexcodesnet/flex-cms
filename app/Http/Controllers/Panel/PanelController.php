@@ -16,12 +16,6 @@ class  PanelController extends Controller
 
         $this->data->menus = [
             [
-                'title' => 'messages.fields.dashboard',
-                'icon' => 'fa-tachometer-alt',
-                'href' => 'panel.dashboard.index',
-                'active' => 'panel.dashboard.*',
-            ],
-            [
                 'title' => 'messages.fields.manage_settings',
                 'hrefs' => [
                     'panel.settings.index',

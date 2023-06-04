@@ -131,16 +131,9 @@ class Permission extends Model
             'images.upload',
         ], 'edit', $route_name);
 
-        if (Str::contains($route_name, 'dashboard.')) {
-            $route_name = 'panel.dashboard';
-        }
-
         switch ($route_name) {
             case 'panel.settings.view':
                 $route_name = 'panel.settings';
-                break;
-            case 'panel.dashboard.view':
-                $route_name = 'panel.dashboard';
                 break;
             case 'panel.languages.view':
                 $route_name = 'panel.languages';

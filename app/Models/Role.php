@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Wildside\Userstamps\Userstamps;
 
 class Role extends Model
 {
-    use SoftDeletes, Userstamps;
+    use SoftDeletes, Userstamps, HasSlug;
 
     protected $hidden = [
         'created_at',

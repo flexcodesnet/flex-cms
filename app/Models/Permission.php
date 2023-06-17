@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Support\Str;
+use App\Traits\HasSlug;
 use App\Traits\HasTreeView;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -10,7 +11,7 @@ use Wildside\Userstamps\Userstamps;
 
 class Permission extends Model
 {
-    use SoftDeletes, HasTreeView, Userstamps;
+    use SoftDeletes, HasTreeView, Userstamps, HasSlug;
 
     protected $fillable = [
         'title',

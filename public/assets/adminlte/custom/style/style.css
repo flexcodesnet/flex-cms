@@ -469,3 +469,9 @@ aside.main-sidebar.sidebar-dark-primary {
         margin-left: 5.6rem !important;
     }
 }
+
+.bootstrap-datetimepicker-widget table td span.active,
+.bootstrap-datetimepicker-widget table td.active,
+.bootstrap-datetimepicker-widget table td.active:hover {
+    background-color: var(--primary);
+}

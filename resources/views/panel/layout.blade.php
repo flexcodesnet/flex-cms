@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ __('messages.dir') }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ __('panel.dir') }}">
 @include('panel.include.head')
 <body class="cms-page hold-transition sidebar-mini layout-fixed">
 @stack('modal')
@@ -23,14 +23,14 @@
                                     @if (!request()->routeIs(sprintf('panel.%s.index', $slug)) )
                                         <li class="breadcrumb-item">
                                             <a href="{{ route(sprintf('panel.%s.index', $slug)) }}">
-                                                @lang(sprintf('messages.models.%s.plural', $slug))
+                                                @lang(sprintf('panel.models.%s.plural', $slug))
                                             </a>
                                         </li>
                                     @endif
                                     @if ((isset($model) && isset($model->parent)) || isset($parent_model))
                                         <li class="breadcrumb-item active">
                                             <a href="{{ route(sprintf('panel.%s.edit', $slug), [$parent_model->id ?? $model->parent->id]) }}">
-                                                {{ sprintf('%s %s', __(sprintf('messages.models.%s.single', $slug)), $parent_model->id ?? $model->parent->id) }}
+                                                {{ sprintf('%s %s', __(sprintf('panel.models.%s.single', $slug)), $parent_model->id ?? $model->parent->id) }}
                                             </a>
                                         </li>
                                     @endif

@@ -5,7 +5,7 @@
         <img src="{{asset_version('assets/adminlte/custom/img/favicon.svg')}}" alt="Logo"
              class="brand-image img-circle elevation-3"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">{{__('messages.title')}}</span>
+        <span class="brand-text font-weight-light">{{__('panel.title')}}</span>
     </a>
     <!-- Sidebar -->
     <div class="sidebar">
@@ -21,7 +21,7 @@
                            class="nav-link {{request()->routeIs('panel.index') ? 'active' : ''}}">
                             <i class="nav-icon fas fa-h-square"></i>
                             <p>
-                                @lang('messages.fields.welcome')
+                                @lang('panel.fields.welcome')
                             </p>
                         </a>
                     </li>

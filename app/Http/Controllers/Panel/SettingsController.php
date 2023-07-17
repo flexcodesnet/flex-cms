@@ -11,8 +11,8 @@ class SettingsController extends PanelController
         parent::__construct();
         $this->data->slug = 'settings';
         $this->data->class = Setting::class;
-        $this->data->base_title = 'messages.models.settings';
-        $this->data->ths = ['messages.fields.title'];
+        $this->data->base_title = 'panel.models.settings';
+        $this->data->ths = ['panel.fields.title'];
         $this->data->fields = [
             [
                 'slug' => 'title',

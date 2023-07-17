@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class Localization
 {
@@ -18,17 +19,13 @@ class Localization
      */
     public function handle($request, Closure $next)
     {
-        $path = explode("/", $request->getPathInfo());
-        if (isset($path[1]) && in_array($path[1], config('app.locales')))
-            $pathLocale = $path[1];
+        $locale = ($request->lang ?? Cookie::get('locale', explode("_", $request->getPreferredLanguage())[0]));
 
-        $locale = ($request->lang ?? Cookie::get('locale', $pathLocale ?? explode("_", $request->getPreferredLanguage())[0]));
-
-        if ($request->wantsJson() && $request->hasHeader('X-Localization') && in_array($request->header('X-Localization'), config('app.locales'))) {
+        if ($request->wantsJson() && $request->hasHeader('X-Localization') && array_key_exists($request->header('X-Localization'), LaravelLocalization::getSupportedLocales())) {
             $locale = $request->header('X-Localization');
         }
 
-        if (!in_array($locale, config('app.locales'))) {
+        if (!array_key_exists($locale, LaravelLocalization::getSupportedLocales())) {
             $locale = config('app.locale');
         }
 

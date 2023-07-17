@@ -13,7 +13,7 @@ class UsersController extends PanelController
         parent::__construct();
         $this->data->slug = 'users';
         $this->data->class = User::class;
-        $this->data->ths = ['messages.fields.name'];
+        $this->data->ths = ['panel.fields.name'];
         if (auth()->user() == null) abort(401);
         $this->data->fields = [
             [

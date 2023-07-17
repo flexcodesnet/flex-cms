@@ -8,11 +8,11 @@ class DashboardController extends PanelController
     {
         $this->data->title = sprintf(
             '%s%s %s',
-            __('messages.fields.hello'),
-            __('messages.fields.commas_symbol'),
+            __('panel.fields.hello'),
+            __('panel.fields.commas_symbol'),
             auth()->user()->name
         );
-        $this->data->page_title = __('messages.fields.welcome');
+        $this->data->page_title = __('panel.fields.welcome');
         return view('panel.index', (array)$this->data);
     }
 }

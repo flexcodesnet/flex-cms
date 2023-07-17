@@ -6,7 +6,7 @@
     {{--    @if(config('app.env') == 'production')--}}
     {{--        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">--}}
     {{--    @endif--}}
-    <title>{{ __(isset($page_title) ? $page_title : $title) }} - @lang('messages.title')</title>
+    <title>{{ __(isset($page_title) ? $page_title : $title) }} - @lang('panel.title')</title>
     <link rel="shortcut icon" href="{{asset('assets/adminlte/custom/img/favicon.svg')}}" type="image/x-icon">
     <!-- Google Font: Tajawal -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700&display=fallback">
@@ -55,7 +55,7 @@
     <link href="https://unpkg.com/@yaireo/dragsort@1.0.8/dist/dragsort.css" rel="stylesheet">
     @stack('head')
     <!-- Theme style -->
-    @if (__('messages.dir') == 'rtl')
+    @if (__('panel.dir') == 'rtl')
         <link href="{{ asset_version('assets/adminlte/dist/css/adminlte.rtl.min.css') }}" rel="stylesheet">
         <link href="{{ asset_version('assets/adminlte/custom/style/rtl.css') }}" rel="stylesheet">
     @else

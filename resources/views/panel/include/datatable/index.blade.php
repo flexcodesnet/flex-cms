@@ -52,7 +52,7 @@
                                     @if(route_is_defined(sprintf('panel.%s.add', $slug)) && role_permission_check(sprintf('panel.%s.add', $slug)))
                                         <div class="">
                                             <a href="{{route(sprintf('panel.%s.add', $slug))}}"
-                                               class="btn btn-block btn-primary">@lang('messages.buttons.add')</a>
+                                               class="btn btn-block btn-primary">@lang('panel.buttons.add')</a>
                                         </div>
                                     @endif
                                 </div>
@@ -61,12 +61,12 @@
                                 <thead>
                                 <tr>
                                     @if($with_id ?? true)
-                                        <th>@lang('messages.fields.id')</th>
+                                        <th>@lang('panel.fields.id')</th>
                                     @endif
                                     @foreach($ths as $th)
                                         <th>{{__($th)}}</th>
                                     @endforeach
-                                    <th class="noExport">@lang('messages.fields.action')</th>
+                                    <th class="noExport">@lang('panel.fields.action')</th>
                                 </tr>
                                 </thead>
                                 <tbody></tbody>

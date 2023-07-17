@@ -32,7 +32,7 @@
                 @foreach(get_translated_routes() as $local=>$item)
                     <a href="{{$item}}"
                        class="dropdown-item {{app()->getLocale() == $local ? 'active' : ''}}">
-                        {{__('messages.languages.'.$local.'.title')}}
+                        {{__('panel.languages.'.$local.'.title')}}
                     </a>
                 @endforeach
             </div>
@@ -51,10 +51,10 @@
                     <li class="user-footer">
                         @if(role_permission_check('panel.users.edit'))
                             <a href="{{route('panel.users.edit', [auth()->id()])}}"
-                               class="btn btn-default btn-flat">@lang('messages.buttons.profile')</a>
+                               class="btn btn-default btn-flat">@lang('panel.buttons.profile')</a>
                         @endif
                         <a href="{{route('panel.logout')}}"
-                           class="btn btn-default btn-flat">@lang('messages.buttons.sign_out')</a>
+                           class="btn btn-default btn-flat">@lang('panel.buttons.sign_out')</a>
                     </li>
                 </ul>
             </li>

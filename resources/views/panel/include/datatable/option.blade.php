@@ -8,7 +8,7 @@
 "cash": true,
 "serverSide": true,
 "language": {
-"url": "{{__(sprintf('messages.languages.%s.datatable', app()->getLocale()))}}"
+"url": "{{__(sprintf('panel.languages.%s.datatable', app()->getLocale()))}}"
 },
 "initComplete": function (settings, json) {
 $table.buttons().container().appendTo('#table-buttons')

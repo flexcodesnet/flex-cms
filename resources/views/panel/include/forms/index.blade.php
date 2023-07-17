@@ -75,7 +75,7 @@
                                                            id="local-tabs-{{$local}}-tab"
                                                            data-toggle="pill" href="#local-tabs-{{$local}}" role="tab"
                                                            aria-controls="local-tabs-{{$local}}"
-                                                           aria-selected="{{$key == 0 ? 'true' : 'false'}}">{{__('messages.languages.'.$local.'.title')}}</a>
+                                                           aria-selected="{{$key == 0 ? 'true' : 'false'}}">{{__('panel.languages.'.$local.'.title')}}</a>
                                                     </li>
                                                 @endforeach
                                             </ul>
@@ -111,9 +111,9 @@
                         <div class="card-footer">
                             <div class="row justify-content-end">
                                 <button type="reset"
-                                        class="btn btn-default mr-2 ml-2">@lang('messages.buttons.reset')</button>
+                                        class="btn btn-default mr-2 ml-2">@lang('panel.buttons.reset')</button>
                                 <button type="submit"
-                                        class="btn btn-primary">@lang(sprintf('messages.buttons.%s',$submit_button))</button>
+                                        class="btn btn-primary">@lang(sprintf('panel.buttons.%s',$submit_button))</button>
                             </div>
                         </div>
                     @endif

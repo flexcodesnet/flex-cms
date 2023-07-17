@@ -13,7 +13,7 @@ class RolesController extends PanelController
         parent::__construct();
         $this->data->slug = 'roles';
         $this->data->class = Role::class;
-        $this->data->ths = ['messages.fields.title'];
+        $this->data->ths = ['panel.fields.title'];
         $this->data->fields = [
             [
                 'slug' => 'title',

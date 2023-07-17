@@ -28,19 +28,19 @@
                         <!-- form start -->
                         <div class="form-group">
                             <label
-                                for="InputCaption">@lang(sprintf('messages.fields.%s','caption'))</label>
+                                for="InputCaption">@lang(sprintf('panel.fields.%s','caption'))</label>
                             <input type="text" class="form-control"
                                    id="InputCaption"
                                    name="caption"
-                                   placeholder="@lang('messages.fields.enter') @lang(sprintf('messages.fields.%s','caption'))"
+                                   placeholder="@lang('panel.fields.enter') @lang(sprintf('panel.fields.%s','caption'))"
                                    required>
                         </div>
                     </div>
                     <div class="modal-footer justify-content-between">
                         <button type="button" data-dismiss="modal"
-                                class="btn btn-default">@lang('messages.buttons.cancel')</button>
+                                class="btn btn-default">@lang('panel.buttons.cancel')</button>
                         <button type="submit" class="btn btn-primary" id="add">
-                            @lang('messages.buttons.update')
+                            @lang('panel.buttons.update')
                         </button>
                     </div>
                 </form>

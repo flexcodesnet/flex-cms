@@ -12,18 +12,18 @@
             <a href="{{route('web.index')}}" class="h2 d-flex justify-center align-items-center text-center">
                 <hr>
                 <span class="brand-text text-center"
-                      style="width: 100%;font-weight: 700 !important;font-size: 1.7rem;">{{__('messages.title')}}</span>
+                      style="width: 100%;font-weight: 700 !important;font-size: 1.7rem;">{{__('panel.title')}}</span>
             </a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">@lang('messages.buttons.sign_in')</p>
+            <p class="login-box-msg">@lang('panel.buttons.sign_in')</p>
 
             <form method="POST" action="{{ route('panel.auth') }}">
                 @csrf
 
                 <div class="input-group mb-3">
                     <input class="form-control"
-                           placeholder="{{__('messages.fields.username')}} @lang('messages.fields.or') {{__('messages.fields.email')}}"
+                           placeholder="{{__('panel.fields.username')}} @lang('panel.fields.or') {{__('panel.fields.email')}}"
                            type="text"
                            name="username" required autofocus/>
                     <div class="input-group-append">
@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input class="form-control" placeholder="{{__('messages.fields.password')}}" type="password"
+                    <input class="form-control" placeholder="{{__('panel.fields.password')}}" type="password"
                            name="password" required
                            autocomplete="current-password"/>
                     <div class="input-group-append">
@@ -46,13 +46,13 @@
                     <div class="col-8">
                         <div class="icheck-primary">
                             <input type="checkbox" id="remember" name="remember">
-                            <label for="remember">@lang('messages.buttons.remember_me')</label>
+                            <label for="remember">@lang('panel.buttons.remember_me')</label>
                         </div>
                     </div>
                     <!-- /.col -->
                     <div class="col-4">
                         <button type="submit"
-                                class="btn btn-primary btn-block">@lang('messages.buttons.sign_in')</button>
+                                class="btn btn-primary btn-block">@lang('panel.buttons.sign_in')</button>
                     </div>
                     <!-- /.col -->
                 </div>

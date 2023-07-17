@@ -37,11 +37,11 @@
                             @case('email')
                             <div class="form-group">
                                 <label
-                                    for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                                    for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
                                 <input type="{{$field->type}}" class="form-control"
                                        id="Input{{$field->slug}}"
                                        name="{{$field->slug}}"
-                                       placeholder="@lang('messages.fields.enter') @lang(sprintf('messages.fields.%s',$field->slug))"
+                                       placeholder="@lang('panel.fields.enter') @lang(sprintf('panel.fields.%s',$field->slug))"
                                     {{isset($field->required) && $field->required ? 'required' : ''}}
                                     {{isset($field->disabled) && $field->disabled ? 'disabled' : ''}}>
                             </div>
@@ -53,9 +53,9 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" data-dismiss="modal"
-                            class="btn btn-default">@lang('messages.buttons.cancel')</button>
+                            class="btn btn-default">@lang('panel.buttons.cancel')</button>
                     <button type="submit" class="btn btn-primary" id="add">
-                        @lang('messages.buttons.add')
+                        @lang('panel.buttons.add')
                     </button>
                 </div>
             </form>

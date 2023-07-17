@@ -2,7 +2,7 @@
     @case('tags')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <input name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
                    id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                    class="tags form-control"
@@ -35,7 +35,7 @@
             ?>
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <textarea id="Input{{$field->slug}}"
                       class="codeMirrorDemo p-3"
                       name="{{$field->slug}}"
@@ -51,7 +51,7 @@
         <div class="form-group row">
             <div class="col-4">
                 <label
-                    for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                    for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             </div>
             <div class="col-6">
                 <input type="checkbox" id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
@@ -62,8 +62,8 @@
                        @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                            disabled
                        @endif
-                       data-on-text="@lang('messages.fields.yes')"
-                       data-off-text="@lang('messages.fields.no')"
+                       data-on-text="@lang('panel.fields.yes')"
+                       data-off-text="@lang('panel.fields.no')"
                        data-bootstrap-switch data-off-color="danger"
                        data-on-color="success">
             </div>
@@ -73,7 +73,7 @@
         @include('panel.include.modal.caption')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             @if(isset($model) and isset($model[$field->slug]))
                 <div class="form-group">
                     @include('panel.include.forms.image', ['image'=>$model[$field->slug],'slug'=>$field->slug,'captioning'=>false,'featured'=>false,'remove'=>true])
@@ -81,7 +81,7 @@
                 @push('head')
                     <style>
                         .custom-file-input:lang({{app()->getLocale()}}) ~ .custom-file-label::after {
-                            content: "@lang('messages.fields.browse')" !important;
+                            content: "@lang('panel.fields.browse')" !important;
                         }
                     </style>
                 @endpush
@@ -102,14 +102,14 @@
                            disabled
                     @endif>
                 <label class="custom-file-label"
-                       for="Input{{$field->slug}}">@lang('messages.fields.please_choose') @lang(sprintf('messages.fields.%s',$field->slug))</label>
+                       for="Input{{$field->slug}}">@lang('panel.fields.please_choose') @lang(sprintf('panel.fields.%s',$field->slug))</label>
             </div>
         </div>
         @break
     @case('video')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             @if(isset($model) and isset($model[$field->slug]))
                 <div class="form-group">
                     <div class="image-area">
@@ -142,7 +142,7 @@
                 @push('head')
                     <style>
                         .custom-file-input:lang({{app()->getLocale()}}) ~ .custom-file-label::after {
-                            content: "@lang('messages.fields.browse')" !important;
+                            content: "@lang('panel.fields.browse')" !important;
                         }
                     </style>
                 @endpush
@@ -162,7 +162,7 @@
                            disabled
                     @endif>
                 <label class="custom-file-label"
-                       for="Input{{$field->slug}}">@lang('messages.fields.please_choose') @lang(sprintf('messages.fields.%s',$field->slug))</label>
+                       for="Input{{$field->slug}}">@lang('panel.fields.please_choose') @lang(sprintf('panel.fields.%s',$field->slug))</label>
             </div>
         </div>
         @break
@@ -175,7 +175,7 @@
         @if(isset($model) && $model->featuredImages() != null && $model->featuredImages()->count() > 0)
             <div class="form-group">
                 <label
-                    for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                    for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
                 <ul id="image-list" class="ul-{{$field->slug}}">
                     @foreach($model->featuredImages()->get() as $image)
                         <li>
@@ -206,12 +206,12 @@
     @case('url')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <input type="{{$field->type}}" class="form-control"
                    id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                    name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
                    @if(isset($parentFieldLocal))
-                       dir="{{__(sprintf('messages.languages.%s.dir', $parentFieldLocal))}}"
+                       dir="{{__(sprintf('panel.languages.%s.dir', $parentFieldLocal))}}"
                    @endif
                    @if(isset($model))
                        value="{{isset($model->translatable) && in_array($field->slug, $model->translatable) ? $model->getTranslationWithoutFallback($field->slug, $parentFieldLocal ?? app()->getLocale()) : ($model[$field->slug] ?? ((isset($model->extra_attributes) && isset($model->extra_attributes[$field->slug])) ? $model->extra_attributes[$field->slug] : ''))}}"
@@ -228,7 +228,7 @@
                        max="{{$field->max}}"
                    @endif
                    @endif
-                   placeholder="@lang('messages.fields.enter') @lang(sprintf('messages.fields.%s',$field->slug))"
+                   placeholder="@lang('panel.fields.enter') @lang(sprintf('panel.fields.%s',$field->slug))"
                    {{isset($field->required) && $field->required ? 'required' : ''}}
                    @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                        disabled
@@ -238,14 +238,14 @@
     @case('password')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <input type="{{$field->type}}" class="form-control"
                    id="Input{{$field->slug}}"
                    name="{{$field->slug}}"
                    @if(isset($parentFieldLocal))
-                       dir="{{__(sprintf('messages.languages.%s.dir', $parentFieldLocal))}}"
+                       dir="{{__(sprintf('panel.languages.%s.dir', $parentFieldLocal))}}"
                    @endif
-                   placeholder="@lang('messages.fields.enter') @lang(sprintf('messages.fields.%s',$field->slug))"
+                   placeholder="@lang('panel.fields.enter') @lang(sprintf('panel.fields.%s',$field->slug))"
                    {{isset($field->required) && $field->required ? 'required' : ''}}
                    @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                        disabled
@@ -262,12 +262,12 @@
             ?>
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <textarea class="form-control" rows="3"
                       @if(isset($parentFieldLocal))
-                          dir="{{__(sprintf('messages.languages.%s.dir', $parentFieldLocal))}}"
+                          dir="{{__(sprintf('panel.languages.%s.dir', $parentFieldLocal))}}"
                       @endif
-                      placeholder="@lang('messages.fields.enter') @lang(sprintf('messages.fields.%s',$field->slug))"
+                      placeholder="@lang('panel.fields.enter') @lang(sprintf('panel.fields.%s',$field->slug))"
                       id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                       name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
                       {{isset($field->required) && $field->required ? 'required' : ''}}
@@ -285,10 +285,10 @@
             ?>
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <textarea class="form-control text-editor" rows="3"
-                      data-locale="{{__('messages.languages.'.$parentFieldLocal.'.code')}}"
-                      placeholder="@lang('messages.fields.enter') @lang(sprintf('messages.fields.%s',$field->slug))"
+                      data-locale="{{__('panel.languages.'.$parentFieldLocal.'.code')}}"
+                      placeholder="@lang('panel.fields.enter') @lang(sprintf('panel.fields.%s',$field->slug))"
                       id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                       name="{{isset($parentFieldLocal) ? $parentFieldLocal.'['.$field->slug.']' : $field->slug}}"
                       {{isset($field->required) && $field->required ? 'required' : ''}}
@@ -307,7 +307,7 @@
     @case('select')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.models.%s.single',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.models.%s.single',$field->slug))</label>
             <select class="form-control select2"
                     id="Input{{$field->slug}}"
                     name="{{$field->input_name ?? $field->relation_key}}"
@@ -318,12 +318,12 @@
                     @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                         disabled
                 @endif>
-                <option selected value="x">@lang('messages.fields.please_choose')</option>
+                <option selected value="x">@lang('panel.fields.please_choose')</option>
                 @foreach($field->query->get() as $item)
                     <option
                         @if((isset($model)))
                             @if(isset($model->model_class))
-                                @if($model[$field->relation_key] == $item->id && \App\Support\Str::contains($model->model_class,__(sprintf('messages.models.%s.single',$field->slug))))
+                                @if($model[$field->relation_key] == $item->id && \App\Support\Str::contains($model->model_class,__(sprintf('panel.models.%s.single',$field->slug))))
                                     selected
                         @endif
                         @elseif($model[$field->relation_key] == $item->id)
@@ -338,7 +338,7 @@
     @case('countries')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <select class="form-control"
                     id="Input{{$field->slug}}"
                     name="{{$field->slug}}"
@@ -348,7 +348,7 @@
                     @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                         disabled
                 @endif>
-                <option selected disabled>@lang('messages.fields.please_choose')</option>
+                <option selected disabled>@lang('panel.fields.please_choose')</option>
                 @include('countries')
             </select>
         </div>
@@ -356,7 +356,7 @@
     @case('image-picker')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.models.%s.single',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.models.%s.single',$field->slug))</label>
             <select class="image-picker show-html form-control">
                 @foreach($field->query->get() as $item)
                     <option data-img-src="{{asset('storage/'.$item->main_image)}}"
@@ -379,7 +379,7 @@
     @case('treeview')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.models.%s.single',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.models.%s.single',$field->slug))</label>
             @include('panel.include.forms.treeview')
         </div>
         @break
@@ -388,13 +388,13 @@
             <div class="form-group mt-5">
                 <div class="row mb-2">
                     <div class="col-6"><label
-                            for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                            for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
                     </div>
                     @if(!(isset($method) && $method == 'GET'))
                         <div class="col-6 d-flex justify-content-end">
                             <div class="">
                                 <a href="{{route(sprintf('panel.%s.%s.model.add',$slug,$field->slug), [app()->getLocale(), $model->id])}}"
-                                   class="btn btn-primary">@lang('messages.buttons.add')</a>
+                                   class="btn btn-primary">@lang('panel.buttons.add')</a>
                             </div>
                         </div>
                     @endif
@@ -409,7 +409,7 @@
     @case('date')
         <div class="form-group">
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <div class="input-group date" id="Input{{$field->slug}}"
                  data-target-input="nearest">
                 <input type="text" class="form-control datetimepicker-input"
@@ -453,9 +453,9 @@
                 @endif
             >
             <label
-                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('messages.models.%s.plural',$field->slug))</label>
+                for="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}">@lang(sprintf('panel.models.%s.plural',$field->slug))</label>
             <select class="select2" multiple="multiple"
-                    data-placeholder="@lang('messages.fields.please_choose')"
+                    data-placeholder="@lang('panel.fields.please_choose')"
                     id="Input{{$field->slug}}{{isset($parentFieldLocal) ? '-'.$parentFieldLocal:''}}"
                     @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                         disabled
@@ -498,9 +498,9 @@
                    @if(isset($model->{$field->slug})) value="{{ $model->{$field->slug}->pluck('id')->implode(',') }}" @endif
             >
             <label
-                for="Input{{$field->slug}}">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+                for="Input{{$field->slug}}">@lang(sprintf('panel.fields.%s',$field->slug))</label>
             <select class="select2" multiple="multiple"
-                    data-placeholder="@lang('messages.fields.please_choose')"
+                    data-placeholder="@lang('panel.fields.please_choose')"
                     id="Input{{$field->slug}}"
                     @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                         disabled

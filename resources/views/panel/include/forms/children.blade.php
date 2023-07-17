@@ -12,15 +12,15 @@
 <table class="table table-hover table-bordered">
     <thead>
     <tr>
-        <th style="width: 10%">@lang('messages.fields.id')</th>
+        <th style="width: 10%">@lang('panel.fields.id')</th>
         @foreach($field->ths as $th)
             @if(\App\Support\Str::contains($th, '.'))
                 <th>{{__($th)}}</th>
             @else
-                <th>{{__('messages.fields.'.$th)}}</th>
+                <th>{{__('panel.fields.'.$th)}}</th>
             @endif
         @endforeach
-        <th style="width: 25%">@lang('messages.fields.action')</th>
+        <th style="width: 25%">@lang('panel.fields.action')</th>
     </tr>
     </thead>
     <tbody>

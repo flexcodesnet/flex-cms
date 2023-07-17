@@ -15,7 +15,7 @@ class AuthController extends PanelController
     public function login($locale = null)
     {
         $data = (object)[];
-        $data->title = __('messages.fields.login');
+        $data->title = __('panel.fields.login');
         return view('panel.auth.login', (array)$data);
     }
 

@@ -30,10 +30,10 @@
             </div>
             <div class="modal-footer justify-content-between">
                 <button type="button" data-dismiss="modal"
-                        class="btn btn-default">@lang('messages.buttons.cancel')</button>
+                        class="btn btn-default">@lang('panel.buttons.cancel')</button>
                 <button type="button" class="btn btn-danger" id="delete">
                     <i class="fa fa-trash"></i>
-                    @lang('messages.buttons.delete')
+                    @lang('panel.buttons.delete')
                 </button>
             </div>
         </div>

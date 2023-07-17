@@ -48,7 +48,7 @@
 <script src="https://unpkg.com/@yaireo/tagify@3.21.5/dist/tagify.min.js"></script>
 <script src="https://unpkg.com/@yaireo/dragsort@1.0.8/dist/dragsort.js"></script>
 @if(app()->getLocale() != 'en')
-    <script src="{{__(sprintf('messages.languages.%s.uppy.url', app()->getLocale()))}}"></script>
+    <script src="{{__(sprintf('panel.languages.%s.uppy.url', app()->getLocale()))}}"></script>
     <script
         src="{{asset_version('assets/adminlte/plugins/ckeditor5/translations/'.app()->getLocale().'.js')}}"></script>
 @endif
@@ -56,7 +56,7 @@
     const $local = '{{app()->getLocale()}}';
     const $debug = '{{config('app.debug') == true ? 1 : 0}}' === '1';
     const $token = $('meta[name="csrf-token"]').attr('content');
-    const $please_choose = '@lang('messages.fields.please_choose')';
+    const $please_choose = '@lang('panel.fields.please_choose')';
     toastr.options.preventDuplicates = true;
     toastr.options.timeOut = 500 * 2; // How long the toast will display without user interaction
     $(function () {

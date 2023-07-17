@@ -12,7 +12,7 @@ class PermissionsController extends PanelController
         parent::__construct();
         $this->data->slug = 'permissions';
         $this->data->class = Permission::class;
-        $this->data->ths = ['messages.fields.title'];
+        $this->data->ths = ['panel.fields.title'];
         $this->data->fields = [
             [
                 'slug' => 'title',

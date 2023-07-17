@@ -7,7 +7,7 @@
             target: '#Input{{$field->slug}}',
             url: '{{ route(sprintf('panel.%s.images.upload', $slug), [$model->id]) }}',
             @if(app()->getLocale() != 'en')
-            locale: Uppy.locales.{{__(sprintf('messages.languages.%s.uppy.iso', app()->getLocale()))}},
+            locale: Uppy.locales.{{__(sprintf('panel.languages.%s.uppy.iso', app()->getLocale()))}},
             @endif
         });
 
@@ -19,7 +19,7 @@
                 @endif
             },
             queryCarousel: '.{{$field->slug}}-owl-carousel',
-            @if (__('messages.dir') == 'rtl')
+            @if (__('panel.dir') == 'rtl')
             rtl: true,
             @endif
         });
@@ -29,7 +29,7 @@
 <div class="form-group">
     <div class="form-group">
         <label for="Input{{$field->slug}}"
-               class="mr-4">@lang(sprintf('messages.fields.%s',$field->slug))</label>
+               class="mr-4">@lang(sprintf('panel.fields.%s',$field->slug))</label>
     </div>
     @if(isset($model) && $model->imagesByKey($field->slug) != null)
         <div class="{{$field->slug}}-owl-carousel owl-carousel owl-theme form-group">

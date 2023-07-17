@@ -2,13 +2,6 @@
 
 namespace App\Http\Controllers\Panel;
 
-use App\Models\Manufacturer;
-use App\Models\Material;
-use App\Models\Order;
-use App\Models\Supplier;
-use Illuminate\Http\Request;
-use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
-
 class DashboardController extends PanelController
 {
     public function index()

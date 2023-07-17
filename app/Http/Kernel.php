@@ -27,7 +27,6 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use RenatoMarinho\LaravelPageSpeed\Middleware\CollapseWhitespace;
 use RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes;
 use RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss;
 use RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch;
@@ -50,9 +49,6 @@ class Kernel extends HttpKernel
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
-
-        EncryptCookies::class,
-        StartSession::class,
     ];
 
     /**
@@ -62,9 +58,9 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-//            EncryptCookies::class,
+            EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
-//            StartSession::class,
+            StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             ShareErrorsFromSession::class,
             VerifyCsrfToken::class,

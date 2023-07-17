@@ -12,8 +12,6 @@ class  PanelController extends Controller
     {
         parent::__construct();
 
-//        dd(auth()->user()->role->permissions->pluck('route_name')->toArray());
-
         $this->data->menus = [
             [
                 'title' => 'panel.fields.manage_settings',

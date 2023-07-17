@@ -14,42 +14,46 @@ class UsersController extends PanelController
         $this->data->slug = 'users';
         $this->data->class = User::class;
         $this->data->ths = ['panel.fields.name'];
-        if (auth()->user() == null) abort(401);
-        $this->data->fields = [
-            [
-                'slug' => 'name',
-                'type' => 'text',
-                'required' => true,
-            ],
-            [
-                'slug' => 'username',
-                'type' => 'text',
-                'required' => false,
-                'disabled' => true,
-            ],
-            [
-                'slug' => 'email',
-                'type' => 'email',
-                'required' => true,
-            ],
-            [
-                'slug' => 'password',
-                'type' => 'password',
-                'required' => false,
-            ],
-            [
-                'slug' => 'password_confirmation',
-                'type' => 'password',
-                'required' => false,
-            ],
-            [
-                'slug' => 'roles',
-                'relation_key' => 'role_id',
-                'type' => 'select',
-                'required' => true,
-                'query' => Role::query()->where('id', '>=', auth()->user()->role_id),
-            ],
-        ];
+        $this->middleware(function ($request, $next) {
+            if (auth()->user() == null) abort(401);
+            $this->data->fields = [
+                [
+                    'slug' => 'name',
+                    'type' => 'text',
+                    'required' => true,
+                ],
+                [
+                    'slug' => 'username',
+                    'type' => 'text',
+                    'required' => false,
+                    'disabled' => true,
+                ],
+                [
+                    'slug' => 'email',
+                    'type' => 'email',
+                    'required' => true,
+                ],
+                [
+                    'slug' => 'password',
+                    'type' => 'password',
+                    'required' => false,
+                ],
+                [
+                    'slug' => 'password_confirmation',
+                    'type' => 'password',
+                    'required' => false,
+                ],
+                [
+                    'slug' => 'roles',
+                    'relation_key' => 'role_id',
+                    'type' => 'select',
+                    'required' => true,
+                    'query' => Role::query()->where('id', '>=', auth()->user()->role_id),
+                ],
+            ];
+
+            return $next($request);
+        });
     }
 
     public function data(Request $request)

@@ -156,7 +156,7 @@ class  PanelController extends Controller
     {
         $response = (object)[];
         $response->status = 'success';
-        $response->message = __('panel.panel.create.success');
+        $response->message = __('panel.messages.create.success');
         $response->model = $this->data->model;
         if (route_is_defined(sprintf('panel.%s.index', $this->data->slug)))
             $response->redirect = route(sprintf('panel.%s.index', $this->data->slug), []);
@@ -168,7 +168,7 @@ class  PanelController extends Controller
         $response = (object)[];
         $response->id = $id;
         $response->status = 'success';
-        $response->message = __('panel.panel.edit.success');
+        $response->message = __('panel.messages.edit.success');
         $response->model = $this->data->model;
         if (route_is_defined(sprintf('panel.%s.index', $this->data->slug)))
             $response->redirect = route(sprintf('panel.%s.index', $this->data->slug), []);
@@ -182,7 +182,7 @@ class  PanelController extends Controller
         $response = (object)[];
         $response->id = $id;
         $response->status = 'success';
-        $response->message = __('panel.panel.delete.success');
+        $response->message = __('panel.messages.delete.success');
         return response()->json((array)$response);
     }
 }

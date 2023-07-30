@@ -1,6 +1,6 @@
 "paging": true,
 "searching": true,
-"ordering": true,
+"ordering": {{(isset($with_ordering) && $with_ordering) ? 'true' : 'false'}},
 "info": true,
 "responsive": true,
 "lengthChange": true,

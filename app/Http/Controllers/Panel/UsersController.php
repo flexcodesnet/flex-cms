@@ -58,7 +58,7 @@ class UsersController extends PanelController
 
     public function data(Request $request)
     {
-        $this->data->result = User::query()->where('role_id', '>=', auth()->user()->role_id)->get();
+        $this->data->result = User::query()->where('role_id', '>=', auth()->user()->role_id);
         return parent::data($request);
     }
 

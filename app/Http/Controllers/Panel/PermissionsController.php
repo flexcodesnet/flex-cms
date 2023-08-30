@@ -35,7 +35,7 @@ class PermissionsController extends PanelController
 
     public function data(Request $request)
     {
-        $this->data->result = Permission::query()->parents()->get();
+        $this->data->result = Permission::query()->parents();
         return parent::data($request);
     }
 

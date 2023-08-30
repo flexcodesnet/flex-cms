@@ -75,7 +75,7 @@ class  PanelController extends Controller
     public function data(Request $request)
     {
         if (!isset($this->data->result))
-            $this->data->result = call_user_func(sprintf('%s::query', $this->data->class))->latest()->get();
+            $this->data->result = call_user_func(sprintf('%s::query', $this->data->class))->latest();
         return $this->datatable($this->data->result);
     }
 

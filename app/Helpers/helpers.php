@@ -43,22 +43,14 @@ if (!function_exists('route_merge_params')) {
 if (!function_exists('array_to_condition')) {
     function array_to_condition($array)
     {
-        $temp = '';
-        foreach ($array as $item) {
-            $temp = sprintf('%s|%s', $temp, $item);
-        }
-        return $temp;
+        return implode('|', $array);
     }
 }
 
 if (!function_exists('array_to_enum')) {
     function array_to_enum($array)
     {
-        $temp = '';
-        foreach ($array as $item) {
-            $temp = sprintf('%s,%s', $temp, $item);
-        }
-        return $temp;
+        return implode(',', $array);
     }
 }
 

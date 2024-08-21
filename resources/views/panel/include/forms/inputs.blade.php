@@ -89,7 +89,7 @@
                     <script type="text/javascript">
                         removeImage({
                             query: '.{{$field->slug}} .remove-image',
-                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [$model->id]) }}?path=',
                         });
                     </script>
                 @endpush
@@ -150,7 +150,7 @@
                     <script type="text/javascript">
                         removeImage({
                             query: '.{{$field->slug}} .remove-image',
-                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [app()->getLocale(), $model->id]) }}?path=',
+                            url: '{{ route(sprintf('panel.%s.image.delete', $slug), [$model->id]) }}?path=',
                         });
                     </script>
                 @endpush
@@ -188,12 +188,12 @@
                 <script type="text/javascript">
                     sortable({
                         query: '.ul-{{$field->slug}}',
-                        url: '{{route("panel.{$field->slug}.images.featured.update", [app()->getLocale(), $model->id])}}'
+                        url: '{{route("panel.{$field->slug}.images.featured.update", [$model->id])}}'
                     });
 
                     removeImage({
                         query: '.ul-{{$field->slug}} .remove-image',
-                        url: '{{ route("panel.{$field->slug}.images.featured.delete", [app()->getLocale(), $model->id]) }}?path=',
+                        url: '{{ route("panel.{$field->slug}.images.featured.delete", [$model->id]) }}?path=',
                     });
                 </script>
             @endpush
@@ -393,7 +393,7 @@
                     @if(!(isset($method) && $method == 'GET'))
                         <div class="col-6 d-flex justify-content-end">
                             <div class="">
-                                <a href="{{route(sprintf('panel.%s.%s.model.add',$slug,$field->slug), [app()->getLocale(), $model->id])}}"
+                                <a href="{{route(sprintf('panel.%s.%s.model.add',$slug,$field->slug), [$model->id])}}"
                                    class="btn btn-primary">@lang('panel.buttons.add')</a>
                             </div>
                         </div>

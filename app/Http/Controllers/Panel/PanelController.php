@@ -121,7 +121,7 @@ class  PanelController extends Controller
     public function add($id = null)
     {
         $this->data->method = 'POST';
-        $this->data->action = route(!isset($id) ? sprintf('panel.%s.create', $this->data->slug) : sprintf('panel.%s.model.create', $this->data->slug), isset($id) ? [$id] : []);
+        $this->data->action = route(!isset($id) ? sprintf('panel.%s.create', $this->data->slug) : sprintf('panel.%s.children.model.create', $this->data->slug), isset($id) ? [$id] : []);
         $this->data->title = sprintf('%s %s', __('panel.buttons.add'), __(sprintf('panel.models.%s.single', $this->data->slug)));
         $this->data->submit_button = 'add';
         if (!is_null(request()->query('id')))

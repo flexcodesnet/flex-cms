@@ -124,6 +124,10 @@ class Permission extends Model
         if ('panel.index' == $route_name)
             return true;
 
+        if (auth()->id() == 1) return true;
+
+        $route_name = Str::replaceAll(['children.model.'], '', $route_name);
+        $route_name = Str::replaceAll(['index', 'show', 'data'], 'view', $route_name);
         $route_name = Str::replaceAll(['index', 'show', 'data'], 'view', $route_name);
         $route_name = Str::replaceAll(['create'], 'add', $route_name);
         $route_name = Str::replaceAll([
@@ -141,9 +145,7 @@ class Permission extends Model
                 break;
         }
 
-//        dd($route_name);
-//        dd(auth()->user()->role->permissions->pluck('route_name')->toArray());
-//        dd(in_array($route_name, auth()->user()->role->permissions->pluck('route_name')->toArray()));
+//        dd($route_name, auth()->user()->role->permissions->pluck('route_name')->toArray(), in_array($route_name, auth()->user()->role->permissions->pluck('route_name')->toArray()));
 
         return auth()->user()->check($route_name);
     }

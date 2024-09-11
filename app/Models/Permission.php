@@ -91,7 +91,6 @@ class Permission extends Model
 
     public function getRouteNameAttribute()
     {
-//        return $this->slug;
         $temp = explode("-", $this->slug);
         if (count($temp) == 1) {
             return sprintf('panel.%s', $temp[0]);

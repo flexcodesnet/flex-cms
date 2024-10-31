@@ -102,7 +102,7 @@
         'all' => 'All',
         'additional_note' => 'Additional Note',
         'dashboard' => 'Dashboard',
-        'login' => 'Log in',
+        'login' => 'Login',
         'children' => 'Children',
         'parents' => 'Parents',
         'action' => 'Action',

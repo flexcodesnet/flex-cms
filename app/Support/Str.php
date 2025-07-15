@@ -25,9 +25,4 @@ class Str extends \Illuminate\Support\Str
 
         return $value;
     }
-
-    public static function isURL($value)
-    {
-        return filter_var($value, FILTER_VALIDATE_URL);
-    }
 }

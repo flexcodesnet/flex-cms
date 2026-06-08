@@ -87,7 +87,5 @@
 </script>
 <!-- AdminLTE App -->
 <script src="{{ asset_version('assets/adminlte/dist/js/adminlte.js') }}"></script>
-<script src="{{ asset_version('assets/adminlte/custom/script/script.js') }}"></script>
-{{--<!-- AdminLTE for demo purposes -->--}}
-{{--<script src="{{ asset_version('assets/adminlte/dist/js/demo.js') }}"></script>--}}
+@vite(['resources/js/panel.js'])
 @stack('foot')

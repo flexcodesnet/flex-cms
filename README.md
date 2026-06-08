@@ -8,7 +8,7 @@ Open-source [FlexCMS](https://cms.flexcodes.net/) — a flexible Laravel CMS wit
 - PHP **8.3+**
 - Composer **2.x**
 - MySQL **5.7+** / MariaDB **10.3+**
-- Node.js (optional, for front-end asset builds)
+- Node.js **18+** and npm (for Vite front-end assets)
 
 ## Quick Start
 
@@ -18,13 +18,15 @@ Open-source [FlexCMS](https://cms.flexcodes.net/) — a flexible Laravel CMS wit
 
 ```bash
 composer install
-cp .env.example .env
+cp .env.example .env   # Windows: copy .env.example .env
 php artisan key:generate
 ```
 
-4. Configure your database and seed passwords in `.env`:
+4. Configure your database, timezone, and seed passwords in `.env`:
 
 ```env
+APP_TIMEZONE=UTC
+
 DB_DATABASE=flex_cms_db
 DB_USERNAME=root
 DB_PASSWORD=
@@ -33,7 +35,16 @@ SEED_ROOT_PASSWORD=your-strong-root-password
 SEED_ADMIN_PASSWORD=your-strong-admin-password
 ```
 
-5. Create the database, then migrate and seed:
+`APP_TIMEZONE` sets the application default timezone (PHP timezone identifier, e.g. `UTC`, `Europe/London`, `Asia/Dubai`). Defaults to `UTC` if omitted.
+
+5. Install front-end dependencies and build assets:
+
+```bash
+npm install
+npm run build
+```
+
+6. Create the database, then migrate and seed:
 
 ```bash
 php artisan migrate
@@ -41,13 +52,13 @@ php artisan db:seed
 php artisan storage:link
 ```
 
-6. Start the application:
+7. Start the application:
 
 ```bash
 php artisan serve
 ```
 
-7. Open the admin panel at [http://localhost:8000/panel/login](http://localhost:8000/panel/login) and sign in with:
+8. Open the admin panel at [http://localhost:8000/panel/login](http://localhost:8000/panel/login) and sign in with:
 
 | Account | Email / username        | Password                          |
 |---------|-------------------------|-----------------------------------|
@@ -56,11 +67,28 @@ php artisan serve
 
 You can log in with either the email or the username. If `SEED_*` variables are not set, `db:seed` generates random passwords and prints them in the console.
 
-> **Laragon / virtual host:** If the app is served from a subdirectory (e.g. `http://localhost/flexcms/public/`), set `APP_URL` in `.env` accordingly.
+> **Laragon / virtual host:** If the app is served from a subdirectory (e.g. `http://localhost/flexcms/public/`), set `APP_URL` in `.env` accordingly and run `npm run build` so Vite assets resolve correctly.
+
+## Development
+
+Panel CSS and JS are built with Vite from:
+
+- `resources/css/panel.css`
+- `resources/js/panel.js`
+
+For hot reload during development, run both:
+
+```bash
+php artisan serve
+npm run dev
+```
+
+Compiled production assets are written to `public/build/` (gitignored). Run `npm run build` before deploying or whenever those source files change.
 
 ## Tech Stack
 
 - **Laravel 12**
+- **Vite 6** for panel CSS/JS
 - **AdminLTE 3** admin theme
 - **Laravel Sanctum** for API authentication
 - **Yajra DataTables** for admin listings
@@ -81,9 +109,11 @@ Before deploying, ensure:
 
 - `APP_DEBUG=false`
 - `APP_ENV=production`
+- `APP_TIMEZONE` matches your deployment region
 - Strong `SEED_*` passwords are set and default seeded accounts are reviewed
 - `SESSION_SECURE_COOKIE=true` when using HTTPS
-- Run `php artisan config:cache`, `route:cache`, and `view:cache`
+- `npm run build` has been run (assets in `public/build/` are not committed)
+- `php artisan config:cache`, `route:cache`, and `view:cache`
 
 ## About FlexCMS
 

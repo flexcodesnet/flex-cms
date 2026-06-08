@@ -710,3 +710,18 @@ function initTreeView(option) {
         }
     })
 }
+
+window.main = main;
+window.tagify = tagify;
+window.clean = clean;
+window.sortable = sortable;
+window.captionImage = captionImage;
+window.removeImage = removeImage;
+window.initGallery = initGallery;
+window.iniAddress = iniAddress;
+window.initCodeMirror = initCodeMirror;
+window.initMultiSelect = initMultiSelect;
+window.initUppy = initUppy;
+window.delModal = delModal;
+window.addModal = addModal;
+window.initTreeView = initTreeView;

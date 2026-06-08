@@ -61,6 +61,6 @@
     @else
         <link href="{{ asset_version('assets/adminlte/dist/css/adminlte.min.css') }}" rel="stylesheet">
     @endif
-    <link href="{{ asset_version('assets/adminlte/custom/style/style.css') }}" rel="stylesheet">
+    @vite(['resources/css/panel.css'])
     @stack('style')
 </head>

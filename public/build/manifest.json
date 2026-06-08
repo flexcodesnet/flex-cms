@@ -1,0 +1,13 @@
+{
+  "resources/css/panel.css": {
+    "file": "assets/panel-DA8HH4Vn.css",
+    "src": "resources/css/panel.css",
+    "isEntry": true
+  },
+  "resources/js/panel.js": {
+    "file": "assets/panel-BAtlmLHp.js",
+    "name": "panel",
+    "src": "resources/js/panel.js",
+    "isEntry": true
+  }
+}

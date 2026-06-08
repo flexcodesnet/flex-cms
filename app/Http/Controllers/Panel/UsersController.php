@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Panel;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UsersController extends PanelController
 {
@@ -92,6 +93,7 @@ class UsersController extends PanelController
         $this->data->model->email = $request->email;
         $this->data->model->role_id = $request->role_id;
         $this->data->model->password = $request->password;
+        $this->data->model->active = true;
         $this->data->model->save();
         return parent::create($request);
     }
@@ -100,7 +102,7 @@ class UsersController extends PanelController
     {
         $request->validate([
             'name' => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
+            'email' => ['required', 'email', 'max:255', Rule::unique('users', 'email')->ignore($id)],
             'password' => 'nullable|min:8|confirmed',
             'role_id' => ['required', 'exists:roles,id'],
         ]);

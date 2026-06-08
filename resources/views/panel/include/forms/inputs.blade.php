@@ -273,7 +273,7 @@
                       {{isset($field->required) && $field->required ? 'required' : ''}}
                       @if((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled))
                           disabled
-                  @endif>{!! $value !!}</textarea>
+                  @endif>{{ $value }}</textarea>
         </div>
         @break
     @case('editor')

@@ -83,6 +83,10 @@ class RolesController extends PanelController
 
     public function delete($id)
     {
+        if ((int) $id === 1) {
+            abort(403);
+        }
+
         $role = $this->findAccessibleRole($id);
         $role->permissions()->detach();
         $role->delete();

@@ -61,10 +61,10 @@
     toastr.options.timeOut = 500 * 2; // How long the toast will display without user interaction
     $(function () {
         @if($errors->any())
-        toastr.error('{{$errors->first()}}');
+        toastr.error(@json($errors->first()));
         @endif
         @if(session()->has('warnings'))
-        toastr.warning('{{session()->get('warnings')}}');
+        toastr.warning(@json(session('warnings')));
         @endif
         @if(session()->has('success'))
             @if(request()->routeIs('panel.languages.index'))
@@ -72,16 +72,16 @@
                     window.location.reload(true);
                 };
             @endif
-        toastr.success('{{session()->get('success')}}');
+        toastr.success(@json(session('success')));
         @endif
         @if(isset($error))
-        toastr.error('{{$error}}');
+        toastr.error(@json($error));
         @endif
         @if(isset($warning))
-        toastr.warning('{{$warning}}');
+        toastr.warning(@json($warning));
         @endif
         @if(isset($success))
-        toastr.success('{{$success}}');
+        toastr.success(@json($success));
         @endif
     });
 </script>

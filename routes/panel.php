@@ -34,7 +34,7 @@ Route::group([], function () {
         Route::middleware(['guest'])->get('login', [AuthController::class, 'login'])->name('login');
         Route::middleware(['guest', 'throttle:5,1'])->post('auth', [AuthController::class, 'authenticate'])->name('auth');
 
-        Route::middleware(['auth', 'verified'])->group(function () {
+        Route::middleware(['auth'])->group(function () {
             Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
             Route::middleware(['role_permission'])->group(function () {

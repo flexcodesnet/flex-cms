@@ -29,6 +29,10 @@ class SettingsController extends PanelController
         ], []);
 
         if (request()->isMethod('PUT')) {
+            request()->validate([
+                'title' => ['required', 'string', 'max:255'],
+            ]);
+
             $this->data->model->title = request()->title;
             $this->data->model->save();
             return parent::update(request(), $this->data->model->id);

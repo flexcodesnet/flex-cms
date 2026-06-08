@@ -41,6 +41,8 @@ class PermissionsController extends PanelController
 
     public function create(Request $request, $id = null)
     {
+        $this->ensureRootRole();
+
         if ($id != null)
             Permission::query()->findOrFail($id);
 
@@ -58,6 +60,8 @@ class PermissionsController extends PanelController
 
     public function update(Request $request, $id)
     {
+        $this->ensureRootRole();
+
 //        Log::info('update');
         $request->validate([
             'title' => ['required', 'max:255'],
@@ -77,6 +81,8 @@ class PermissionsController extends PanelController
 
     public function delete($id)
     {
+        $this->ensureRootRole();
+
         $this->data->model = Permission::query()->findOrFail($id);
         $this->data->model->roles()->detach();
         $children = $this->data->model->children()->get();

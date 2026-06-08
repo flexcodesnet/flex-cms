@@ -46,7 +46,12 @@ class AuthController extends PanelController
         }
 
         if (auth()->attempt($credentials, $request->remember == 'on')) {
-            // Authentication passed...
+            if (! auth()->user()->active) {
+                auth()->logout();
+
+                return redirect(route('panel.login'))->withErrors(['Invalid credentials']);
+            }
+
             return redirect(route('panel.index'));
         }
 

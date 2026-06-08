@@ -29,18 +29,20 @@ class UserSeeder extends Seeder
             $this->command?->warn("SEED_ADMIN_PASSWORD not set. Admin password: {$adminPassword}");
         }
 
-        User::query()->create([
+        User::query()->forceCreate([
             'name' => 'Root',
             'email' => 'root@flexcodes.net',
             'password' => $rootPassword,
             'role_id' => 1,
+            'active' => true,
         ]);
 
-        User::query()->create([
+        User::query()->forceCreate([
             'name' => 'Admin',
             'email' => 'admin@flexcodes.net',
             'password' => $adminPassword,
             'role_id' => 2,
+            'active' => true,
         ]);
     }
 }

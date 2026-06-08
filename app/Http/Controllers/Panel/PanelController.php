@@ -86,6 +86,13 @@ class  PanelController extends Controller
         return $groups;
     }
 
+    protected function ensureRootRole(): void
+    {
+        if (auth()->user()->role_id !== 1) {
+            abort(403);
+        }
+    }
+
     private function label($row, $title = null, $bg = 'primary')
     {
         $this->data->row = $row;
@@ -131,7 +138,8 @@ class  PanelController extends Controller
 
             return $response->make(true);
         } catch (Exception $e) {
-            abort(500, $e->getMessage());
+            report($e);
+            abort(500, __('panel.messages.error.occurred'));
         }
     }
 

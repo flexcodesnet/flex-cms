@@ -8,7 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\HasApiTokens;
-use Wildside\Userstamps\Userstamps;
+use Mattiverse\Userstamps\Traits\Userstamps;
 
 class User extends Authenticatable
 {

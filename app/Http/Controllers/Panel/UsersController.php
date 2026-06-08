@@ -118,4 +118,23 @@ class UsersController extends PanelController
         $this->data->model->save();
         return parent::update($request, $id);
     }
+
+    public function delete($id)
+    {
+        if ((int) $id === auth()->id()) {
+            abort(403);
+        }
+
+        User::query()
+            ->where('role_id', '>=', auth()->user()->role_id)
+            ->findOrFail($id)
+            ->delete();
+
+        $response = (object) [];
+        $response->id = $id;
+        $response->status = 'success';
+        $response->message = __('panel.messages.delete.success');
+
+        return response()->json((array) $response);
+    }
 }

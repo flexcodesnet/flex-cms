@@ -5,14 +5,14 @@
     <script src="{{ asset_version('assets/adminlte/plugins/treejs/tree.min.js') }}"></script>
     <script type="text/javascript">
         const myTree = initTreeView({
-            all: '@lang('panel.fields.all')',
-            slug: '{{$field->slug}}',
-            query: '#{{$field->slug}}',
-            data: JSON.parse('{!! $field->model->treeView() !!}'), // prettier-ignore
+            all: @json(__('panel.fields.all')),
+            slug: @json($field->slug),
+            query: @json('#'.$field->slug),
+            data: @json($field->model->treeView()),
             @if(isset($values))
-            values: {!! $values !!},
+            values: @json($values),
             @endif
-            disabled: {{((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled)) ? 'true':'false'}},
+            disabled: {{ ((isset($method) && $method == 'GET') || (isset($field->disabled) && $field->disabled)) ? 'true' : 'false' }},
         });
     </script>
 @endpush

@@ -1,8 +1,16 @@
 :root {
-    /*--blue: #184FA8;*/
-    --primary: #1c35a8;
-    --primary-rgb: 28, 53, 168;
-    --primary-dark: #03136b;
+    --primary: #2B3FC0;
+    --primary-rgb: 43, 63, 192;
+    --primary-dark: #0B0E2B;
+    --surface-navy: #1c2654;
+    --surface-navy-light: #2a3570;
+    --gradient-auth:
+        radial-gradient(ellipse 70% 55% at 15% 0%, rgba(75, 95, 200, 0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 55% 45% at 85% 100%, rgba(43, 63, 192, 0.18) 0%, transparent 60%),
+        linear-gradient(165deg, #354a9e 0%, #283872 42%, #1c2654 100%);
+    --gradient-navbar:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, transparent 38%),
+        linear-gradient(180deg, #2a3570 0%, #1c2654 100%);
     --accent: #fff;
     --accent-dark: #aaa;
     /*--red: #EF0600;*/
@@ -388,11 +396,17 @@ aside.main-sidebar.sidebar-dark-primary {
     color: var(--primary) !important;
 }
 
-[class*="sidebar-dark-"], .navbar-dark {
-    background: linear-gradient(90deg, #03136b, #0d1e7f, #162993, #1c35a8, #2241be);
+[class*="sidebar-dark-"] {
+    background: var(--gradient-navbar);
+}
+
+.main-header.navbar {
+    background: #fff;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 .login-page, .register-page {
+    background-color: var(--surface-navy);
     background-size: cover;
 }
 
@@ -401,12 +415,14 @@ aside.main-sidebar.sidebar-dark-primary {
     position: absolute;
     width: 100%;
     height: 100%;
-    backdrop-filter: blur(3px);
-    background: linear-gradient(90deg, #03136b, #0d1e7f, #162993, #1c35a8, #2241be);
+    background: var(--gradient-auth);
 }
 
 .login-box .card {
     color: var(--primary) !important;
+    border: none;
+    border-radius: 0.75rem;
+    box-shadow: 0 12px 40px rgba(11, 14, 43, 0.22);
 }
 
 .login-box .card a:hover {
@@ -474,4 +490,68 @@ aside.main-sidebar.sidebar-dark-primary {
 .bootstrap-datetimepicker-widget table td.active,
 .bootstrap-datetimepicker-widget table td.active:hover {
     background-color: var(--primary);
+}
+
+.menu-card-group-title {
+    color: var(--primary-dark);
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.menu-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    background: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 0.75rem;
+    box-shadow: 0 2px 8px rgba(11, 14, 43, 0.06);
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    height: 100%;
+}
+
+.menu-card:hover {
+    border-color: rgba(43, 63, 192, 0.25);
+    box-shadow: 0 6px 20px rgba(43, 63, 192, 0.12);
+    transform: translateY(-2px);
+    color: inherit;
+    text-decoration: none;
+}
+
+.menu-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.65rem;
+    background: linear-gradient(135deg, rgba(43, 63, 192, 0.12) 0%, rgba(11, 14, 43, 0.06) 100%);
+    color: var(--primary);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.menu-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.menu-card-title {
+    margin: 0;
+    font-weight: 600;
+    color: var(--primary-dark);
+}
+
+.menu-card-arrow {
+    color: rgba(43, 63, 192, 0.35);
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.menu-card:hover .menu-card-arrow {
+    color: var(--primary);
+    transform: translateX(3px);
 }

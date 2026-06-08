@@ -26,6 +26,6 @@ trait HasTreeView
             }
             $response[] = $item;
         }
-        return json_encode($response);
+        return $response;
     }
 }

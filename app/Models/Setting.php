@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Wildside\Userstamps\Userstamps;
+use Mattiverse\Userstamps\Traits\Userstamps;
 
 class Setting extends Model
 {

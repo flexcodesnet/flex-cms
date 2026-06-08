@@ -27,10 +27,10 @@ use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use RenatoMarinho\LaravelPageSpeed\Middleware\ElideAttributes;
-use RenatoMarinho\LaravelPageSpeed\Middleware\InlineCss;
-use RenatoMarinho\LaravelPageSpeed\Middleware\InsertDNSPrefetch;
-use RenatoMarinho\LaravelPageSpeed\Middleware\RemoveComments;
+use VinkiusLabs\LaravelPageSpeed\Middleware\ElideAttributes;
+use VinkiusLabs\LaravelPageSpeed\Middleware\InlineCss;
+use VinkiusLabs\LaravelPageSpeed\Middleware\InsertDNSPrefetch;
+use VinkiusLabs\LaravelPageSpeed\Middleware\RemoveComments;
 
 class Kernel extends HttpKernel
 {

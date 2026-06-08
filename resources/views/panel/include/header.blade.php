@@ -53,8 +53,10 @@
                             <a href="{{route('panel.users.edit', [auth()->id()])}}"
                                class="btn btn-default btn-flat">@lang('panel.buttons.profile')</a>
                         @endif
-                        <a href="{{route('panel.logout')}}"
-                           class="btn btn-default btn-flat">@lang('panel.buttons.sign_out')</a>
+                        <form method="POST" action="{{ route('panel.logout') }}" class="d-inline">
+                            @csrf
+                            <button type="submit" class="btn btn-default btn-flat">@lang('panel.buttons.sign_out')</button>
+                        </form>
                     </li>
                 </ul>
             </li>

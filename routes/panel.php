@@ -32,10 +32,10 @@ Route::middleware(['guest'])->get('panel/login', function () {
 Route::group([], function () {
     Route::middleware([])->prefix('panel')->group(function () {
         Route::middleware(['guest'])->get('login', [AuthController::class, 'login'])->name('login');
-        Route::middleware(['guest'])->any('auth', [AuthController::class, 'authenticate'])->name('auth');
+        Route::middleware(['guest', 'throttle:5,1'])->post('auth', [AuthController::class, 'authenticate'])->name('auth');
 
         Route::middleware(['auth', 'verified'])->group(function () {
-            Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+            Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
             Route::middleware(['role_permission'])->group(function () {
                 Route::get('', [DashboardController::class, 'index'])->name('index');

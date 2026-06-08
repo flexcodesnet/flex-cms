@@ -7,30 +7,22 @@
         "laravel"
     ],
     "license": "MIT",
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/flexcodesnet/laravel-page-speed"
-        }
-    ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.3",
         "ext-json": "*",
-        "guzzlehttp/guzzle": "^7.4",
-        "laravel/framework": "^10.0",
-        "laravel/sanctum": "^3.2",
-        "laravel/tinker": "^2.5",
-        "renatomarinho/laravel-page-speed": "^1.0",
-        "wildside/userstamps": "^2.0",
-        "yajra/laravel-datatables-oracle": "^10.0"
+        "laravel/framework": "^12.0",
+        "laravel/sanctum": "^4.0",
+        "laravel/tinker": "^3.0",
+        "renatomarinho/laravel-page-speed": "^4.0",
+        "wildside/userstamps": "^4.0",
+        "yajra/laravel-datatables-oracle": "^12.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^2.0",
-        "fakerphp/faker": "^1.9.1",
-        "laravel/sail": "^1.0.1",
+        "fakerphp/faker": "^1.22.0",
         "mockery/mockery": "^1.4.4",
-        "nunomaduro/collision": "^7.0",
-        "phpunit/phpunit": "^10.0"
+        "nunomaduro/collision": "^8.1",
+        "phpunit/phpunit": "^11.0"
     },
     "autoload": {
         "files": [

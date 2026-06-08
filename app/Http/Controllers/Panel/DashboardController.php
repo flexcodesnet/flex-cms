@@ -13,6 +13,8 @@ class DashboardController extends PanelController
             auth()->user()->name
         );
         $this->data->page_title = __('panel.fields.welcome');
+        $this->data->menu_cards = $this->getAllowedMenuCards();
+
         return view('panel.index', (array)$this->data);
     }
 }

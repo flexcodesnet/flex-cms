@@ -467,6 +467,7 @@
         'warning' => [
             'occurred' => 'Pay Attention',
         ],
+        'no_permissions' => 'You do not have access to any modules yet.',
     ],
     'enum' => [
         'preferred_ordering_method' => [

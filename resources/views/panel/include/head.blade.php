@@ -7,7 +7,7 @@
     {{--        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">--}}
     {{--    @endif--}}
     <title>{{ __(isset($page_title) ? $page_title : $title) }} - @lang('panel.title')</title>
-    <link rel="shortcut icon" href="{{asset('assets/adminlte/custom/img/favicon.svg')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset_version('assets/adminlte/custom/img/favicon.svg')}}" type="image/x-icon">
     <!-- Google Font: Tajawal -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,700&display=fallback">
     <!-- Ionicons -->

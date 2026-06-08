@@ -7,7 +7,7 @@ use App\Traits\HasSlug;
 use App\Traits\HasTreeView;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Wildside\Userstamps\Userstamps;
+use Mattiverse\Userstamps\Traits\Userstamps;
 
 class Permission extends Model
 {
@@ -122,8 +122,6 @@ class Permission extends Model
     {
         if ('panel.index' == $route_name)
             return true;
-
-        if (auth()->id() == 1) return true;
 
         $route_name = Str::replaceAll(['children.model.'], '', $route_name);
         $route_name = Str::replaceAll(['index', 'show', 'data'], 'view', $route_name);

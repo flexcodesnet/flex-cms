@@ -70,14 +70,26 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function removeIndexPhpFromUrl()
     {
-        if (Str::contains(request()->getRequestUri(), '/index.php')) {
-            $url = str_replace('/index.php', '/', request()->getRequestUri());
-            $url = str_replace('//', '/', $url);
+        $uri = request()->getRequestUri();
 
-            if (strlen($url) > 0) {
-                header("Location: $url", true, 301);
-                exit;
-            }
+        if (! Str::contains($uri, '/index.php')) {
+            return;
+        }
+
+        $path = parse_url($uri, PHP_URL_PATH) ?? '/';
+        $query = parse_url($uri, PHP_URL_QUERY);
+
+        $path = preg_replace('#/index\.php#', '', $path, 1) ?: '/';
+
+        if (! str_starts_with($path, '/') || str_starts_with($path, '//')) {
+            return;
+        }
+
+        $target = $path.($query ? '?'.$query : '');
+
+        if ($target !== $uri) {
+            redirect()->to($target, 301)->send();
+            exit;
         }
     }
 }

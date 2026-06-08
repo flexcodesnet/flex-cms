@@ -58,6 +58,34 @@ class  PanelController extends Controller
         ];
     }
 
+    protected function getAllowedMenuCards(): array
+    {
+        $groups = [];
+
+        foreach ($this->data->menus as $menu) {
+            if (!isset($menu['children'])) {
+                continue;
+            }
+
+            $items = [];
+
+            foreach ($menu['children'] as $child) {
+                if (role_permission_check($child['href'])) {
+                    $items[] = $child;
+                }
+            }
+
+            if (!empty($items)) {
+                $groups[] = [
+                    'title' => $menu['title'],
+                    'items' => $items,
+                ];
+            }
+        }
+
+        return $groups;
+    }
+
     private function label($row, $title = null, $bg = 'primary')
     {
         $this->data->row = $row;

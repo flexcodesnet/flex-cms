@@ -1,52 +1,108 @@
 FlexCMS
 ===============
 
-This is our open source [FlexCMS](https://cms.flexcodes.net/) a CMS build with flex in mind.
+Open-source [FlexCMS](https://cms.flexcodes.net/) — a flexible Laravel CMS with a role-based admin panel.
 
-## Quick Start:
+## Requirements
 
-* Install [php](https://www.php.net/downloads.php/) if you don't already have it.
-* Install [Composer](https://getcomposer.org/download/) if you don't already have it.
-* Clone or [download](https://github.com/flexcodesnet/flex-cms/archive/main.zip) this repo.  (if you download, unzip the file to a directory.)
-* On the command line in the top directory of this repo, run 
-  * `composer i` 
-  * `php artisan serve` 
-* Visit the application with your browser at http://localhost:8000/ and login with
-  * username: root
-  * password: 123456
+- PHP **8.3+**
+- Composer **2.x**
+- MySQL **5.7+** / MariaDB **10.3+**
+- Node.js (optional, for front-end asset builds)
 
+## Quick Start
+
+1. Install [PHP](https://www.php.net/downloads.php/) and [Composer](https://getcomposer.org/download/).
+2. Clone or [download](https://github.com/flexcodesnet/flex-cms/archive/main.zip) this repository.
+3. From the project root, run:
+
+```bash
+composer install
+cp .env.example .env
+php artisan key:generate
+```
+
+4. Configure your database and seed passwords in `.env`:
+
+```env
+DB_DATABASE=flex_cms_db
+DB_USERNAME=root
+DB_PASSWORD=
+
+SEED_ROOT_PASSWORD=your-strong-root-password
+SEED_ADMIN_PASSWORD=your-strong-admin-password
+```
+
+5. Create the database, then migrate and seed:
+
+```bash
+php artisan migrate
+php artisan db:seed
+php artisan storage:link
+```
+
+6. Start the application:
+
+```bash
+php artisan serve
+```
+
+7. Open the admin panel at [http://localhost:8000/panel/login](http://localhost:8000/panel/login) and sign in with:
+
+| Account | Email / username        | Password                          |
+|---------|-------------------------|-----------------------------------|
+| Root    | `root@flexcodes.net`    | value of `SEED_ROOT_PASSWORD`     |
+| Admin   | `admin@flexcodes.net`   | value of `SEED_ADMIN_PASSWORD`    |
+
+You can log in with either the email or the username. If `SEED_*` variables are not set, `db:seed` generates random passwords and prints them in the console.
+
+> **Laragon / virtual host:** If the app is served from a subdirectory (e.g. `http://localhost/flexcms/public/`), set `APP_URL` in `.env` accordingly.
+
+## Tech Stack
+
+- **Laravel 12**
+- **AdminLTE 3** admin theme
+- **Laravel Sanctum** for API authentication
+- **Yajra DataTables** for admin listings
+- Role & permission-based access control
+
+## Features
+
+- Modern admin panel with RTL support
+- Multi-language ready
+- Dashboard home with permission-aware module cards
+- Users, roles, and permissions management
+- Settings management
+- Speed and page-optimization middleware
+
+## Production Checklist
+
+Before deploying, ensure:
+
+- `APP_DEBUG=false`
+- `APP_ENV=production`
+- Strong `SEED_*` passwords are set and default seeded accounts are reviewed
+- `SESSION_SECURE_COOKIE=true` when using HTTPS
+- Run `php artisan config:cache`, `route:cache`, and `view:cache`
 
 ## About FlexCMS
 
-FlexCMS is a modern design for any website. You can boost your business using FlexCMS Multipurpose Laravel CMS Script.
+FlexCMS is a multipurpose Laravel CMS for individuals and businesses who need a manageable web presence without writing code. The admin panel is designed for clarity and speed — build and maintain your site through an intuitive interface.
 
-It will give interactive any kind of product presentation for yourself. Its very clean and modern design, we make it with our expertise and according to User experience.
-This portfolio has been made to open your own image and presentation to the business world in the best possible way. Build your website in a few clicks. Prepare your website in minutes with an understandable management panel. No coding required.
-
-Project Purpose: You can be individual or corporate. It may be your private business or company. Every company has a responsibility to advertise itself. In this project, my goal is to bring your company to the world. In this way, your customers will reach you more easily. And as a result, you will establish your identity in the internet world.
-
-Project Solutions: First of all, how can your customers reach you easily and how can you explain yourself well to your customer? Site design and functionality was created in line with the answer to this question.
-
-With Laravel, you will benefit from the latest version service.
-Admin panel and frontend fully support RTL version
-Easy solution to multi-language support.
-Speed, flexibility and full customization.
-
-Thanks for Laravel and AdminLTE
-
+Admin panel and frontend support RTL layouts. Multi-language support is built in. The stack is built on Laravel and AdminLTE.
 
 ## Contributing
 
-[Flexcodes](https://www.flexcodes.net/) encourage open source community
+[Flexcodes](https://flexcodes.net/) welcomes contributions to the open-source community.
 
-Thank you for considering contributing to the FlexCMS! If you find it helpful consider to 
+If you find FlexCMS helpful, consider supporting the project:
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/flexcodes)
 
 ## Support
 
-If you discover any bug within our CMS, or want to share with us any new feature idea please send an e-mail to FlexCodes via [support@flexcodes.net](mailto:support@flexcodes.net).
+Report bugs or feature ideas to [support@flexcodes.net](mailto:support@flexcodes.net).
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The MIT License (MIT). See [LICENSE.md](LICENSE.md) for details.
